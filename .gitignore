@@ -1,0 +1,8 @@
+.mypy_cache/
+.vspreview/
+*.html
+book
+test.py
+theme/index.hbs
+theme/pagetoc.css
+theme/pagetoc.js
