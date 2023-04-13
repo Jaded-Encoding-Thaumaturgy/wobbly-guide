@@ -9,7 +9,7 @@ It should start downloading Wobbly now.
 
 To continue, you must now unpack this zip file.
 Make sure you unpack it in a place you're sure it won't be moved from in the future!
-The easiest place to put it in is in your Documents directory.
+The easiest place to put it is in your Documents directory.
 
 ## Dependencies
 
