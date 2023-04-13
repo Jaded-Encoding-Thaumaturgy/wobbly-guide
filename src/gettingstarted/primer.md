@@ -144,7 +144,7 @@ and the most common cases will be handled on their own pages.
 
 ![An example of interlaced credits on top of 23.976 frame/s video](imgs/interlaced_credits.png)
 
-In some rare instances,
+In some rarer instances,
 certain animations or effects may also be animated at 29.97 frame/s.
 These will often play back completely fine on 60i video,
 and appear progressive.
