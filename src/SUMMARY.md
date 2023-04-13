@@ -7,7 +7,16 @@
 - [Installation](./gettingstarted/installation.md)
 
 --------
+[//]: <> (Wibbly usage)
+
+# Wibbly
+
+- [First steps](./wibbly/jobs.md)
+
+--------
 [//]: <> (Wobbly usage)
+
+# Wobbly
 
 --------
 
