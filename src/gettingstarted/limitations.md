@@ -25,7 +25,7 @@ Wobbly has no support for footage that was deinterlaced
 or pre-fieldmatched.
 Deinterlacing comes in many shapes and sizes,
 the most common of which is through filters
-such as YADIF(found in FFMpeg).
+such as YADIF (found in FFMpeg).
 These are destructive by nature
 and will not give Wobbly anything to work with.
 Another common example of deinterlaced footage
@@ -36,10 +36,11 @@ such as AABBA).
 ![An example of blended footage (Fate/EXTRA Extella OP1)](imgs/blended_fields.png)
 
 Similarly,
-content that has its fields already matches
+content that has its fields already matched
 and only requires decimation are not currently supported in Wobbly.
 It relies on knowing the fieldmatches
 to determine how a clip should be decimated.
+It simply does not know what to do with progressive content.
 
 ## "True" VFR
 
