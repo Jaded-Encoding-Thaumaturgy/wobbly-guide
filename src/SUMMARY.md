@@ -4,6 +4,7 @@
 
 - [About](../README.md)
 - [Telecining](./gettingstarted/primer.md)
+- [Limitations](./gettingstarted/limitations.md)
 - [Installation](./gettingstarted/installation.md)
 
 --------
