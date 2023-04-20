@@ -12,11 +12,15 @@
 # Wibbly
 
 - [First steps](./wibbly/jobs.md)
+- [Different Implementations](./wibbly/implementation.md)
 
 --------
 [//]: <> (Wobbly usage)
 
 # Wobbly
+
+- [Standard Workflow](./wobbly/workflow.md)
+- [Using Wobbly's Output](./wobbly/output.md)
 
 --------
 
