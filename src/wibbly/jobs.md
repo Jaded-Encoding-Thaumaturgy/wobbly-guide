@@ -151,3 +151,11 @@ A new window will pop up
 and show the estimated time until each job is done.
 
 ![Running a job](imgs/gathering_metrics.png)
+
+Once this is done,
+you will have a "wob" file
+in the location you've told it to save it
+(by default next to the source file).
+This file is simply a JSON file
+and contains all the metrics Wibbly has gathered for you.
+These will be read and modified by Wobbly.
