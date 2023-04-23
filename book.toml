@@ -16,4 +16,4 @@ curly-quotes = true
 mathjax-support = true
 additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
 no-section-label = true
-git-repository-url = "https://github.com/LightArrowsEXE/wobbly-guide"
+git-repository-url = "https://github.com/Irrational-Encoding-Wizardry/wobbly-guide"
