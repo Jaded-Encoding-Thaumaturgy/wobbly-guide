@@ -1,0 +1,989 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Wobbly Guide</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        
+        <link rel="stylesheet" href="./theme/catppuccin-highlight.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded "><a href="wibbly/implementation.html">Different Implementations</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="wobbly/workflow.html">Standard Workflow</a></li><li class="chapter-item expanded "><a href="wobbly/output.html">Using Wobbly's Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="privacy-policy.html">Privacy Policy</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Wobbly Guide</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/Irrational-Encoding-Wizardry/wobbly-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#the-iew-guide-to-wobbly" id="the-iew-guide-to-wobbly">The IEW Guide to Wobbly</a></h1>
+<p>Learn how to use Wobbly, <em>the</em> Vapoursynth manual IVTCing tool.
+This guide covers the basic use-cases,
+recommend settings,
+and how to use Wobbly
+so you can perform IVTC to your heart’s content.</p>
+<p>To start reading,
+you can click on the arrow on the right
+or press your <kbd>→</kbd> key
+to go to the next page,
+or you can browse the page index on the left.</p>
+<p>The project is <a href="https://github.com/Irrational-Encoding-Wizardry/wobbly-guide">hosted on Github</a>.</p>
+<h2><a class="header" href="#getting-started" id="getting-started">Getting started</a></h2>
+<p>New to Wobbly or IVTC/Deinterlacing in general?
+Check out our [quick primer][primer] to get a basic understanding
+of the relevant topic and theories.</p>
+<h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
+<p>Spot a typo or problem with the guide?
+Want to contribute to Wobbly?
+Check the <a href="../../wobbly-docs/src/development/CONTRIBUTING.html">contribute</a> section!</p>
+<h2><a class="header" href="#disclaimers" id="disclaimers">Disclaimers</a></h2>
+<p>This guide may not always be entirely up-to-date with what newer commits offer.
+Programs may be in constant development,
+so if something is outdated or there are any errors in this book,
+please <a href="../../wobbly-docs/src/development/contact.html">contact us</a>!</p>
+<p>This is neither a Vapoursynth nor a filtering guide.
+This book explains how to use a Vapoursynth tool,
+but figuring out how to make use of the output is up to you.</p>
+<h1><a class="header" href="#a-primer-on-telecining" id="a-primer-on-telecining">A Primer on Telecining</a></h1>
+<p>When working on DVDs,
+you will no doubt come across a fairly annoying artifact:
+combing.</p>
+<p><img src="gettingstarted/imgs/combed_frame.png" alt="A classic example of combing" /></p>
+<p>Virtually every DVD has these,
+and in some cases  you may even find them on Blu-rays!</p>
+<p>What you’re seeing here is called <em>telecining</em>.
+It’s very common for digital anime to be produced at a constant 23.976 frame/s
+However, old analog TVs would always broadcast video at 29.97 frame/s.
+This became a problem for anything that wasn’t that exact framerate,
+such as a lot of movies and TV series,
+and, indeed, most anime.</p>
+<h2><a class="header" href="#telecining-patterns" id="telecining-patterns">Telecining Patterns</a></h2>
+<p>In order to fit within that constraint,
+telecining patterns were conceived.
+For regular anime framerates,
+there are four frames of the original animation (also known as FILM)
+for every five frames of 29.97 frame/s video,
+as shown with the following simple equation:</p>
+<p>$$
+\frac{23.976}{29.97} = \frac{4}{5}
+$$</p>
+<p>To deal with this,
+many studios have been exploiting the interlaced nature of 60Hz video.
+In interlaced video,
+every frame is split up into two incomplete images,
+also known as <em>fields</em>.
+Each field takes up either the even or odd rows of a frame.
+By abusing how this works,
+studios have been able to fit 23.976 video into 29.97
+by splitting each frame up into fields and duplicating them as necessary.</p>
+<p>To achieve a clean 23.976 → 29.97 frame/s conversion,
+4 frames must be represented as 10 fields.
+This is done by duplicating fields following a set pattern.
+Assuming each frame in a cycle is labelled alphabetically,
+you get frames A, B, C, and D.
+When telecining,
+the fields of these frames will often alternate like so:</p>
+<p>$$
+\frac{A - A - B -  B -  B -  C -  C -  D - D - D}{2 - 3 - 2 -3}
+$$</p>
+<p>This telecining operation is called <em>3:2 pulldown</em>,
+and is the most common form of telecining there is for anime.</p>
+<p><img src="gettingstarted/imgs/3_2_pulldown.png" alt="A classic example of 3:2 pulldown" /></p>
+<p>Other forms of pulldown exist,
+but those are rarely used in any kind of video source
+you’ll end up using when encoding anime.
+The only exception may be PAL DVDs,
+but due to the nature of trying to fit 23.976 → 25 being so difficult,
+these will often be a lot harder to undo
+(and more crucially,
+Wobbly does not currently offer support for these kinds of patterns).</p>
+<h2><a class="header" href="#telecining-vs-interlacing" id="telecining-vs-interlacing">Telecining vs. Interlacing</a></h2>
+<p>Interlacing and telecining are often mixed up in common vernecular.
+However, it’s very important to understand the differences between the two prior to filtering,
+and to be able to diagnose which frames make use of which.</p>
+<p><em>Interlacing</em> is,
+in essence, the combing-like artifact you see,
+even with telecining.
+The difference is that with a fully interlaced video,
+<em>there are no fields to match together</em>.
+Every field is unique,
+so the proper way to handle these is to deinterlace them
+and double the temporal resolution.</p>
+<p><em>Telecining</em> follows a predictable pattern
+and is used to convert a lower framerate into a higher one
+(using for example the aforementioned 3:2 pulldown).
+Certain frames may be interlaced,
+but you are not required to deinterlace them.
+Because the video was originally of a lower framerate
+and a consistent pattern has been applied to increase it,
+the original frames can be nigh-losslessly restored.</p>
+<p>When deinterlacing,
+what you’re doing is splitting up the video frames into fields
+and interpolating them up into full frames.
+Every field is half the vertical resolution of the video,
+so when deinterlacing a frame you’re effectively throwing out half the vertical resolution
+and trying to recreate what it may have looked like.
+With telecined content,
+this does more harm than trying to reconstruct the original frames by matching the fields
+and is thus not preferable
+unless you’re dealing with post-processing that broke the pattern.</p>
+<h2><a class="header" href="#cycles-and-pattern-breaking" id="cycles-and-pattern-breaking">Cycles and Pattern Breaking</a></h2>
+<p>When Inverse Telecining (also known as IVTC),
+it helps a lot to think of the video in terms of <em>cycles</em>.
+Within a telecined 29.97 frame/s video,
+assuming the source video is 23.976 frame/s,
+each cycle will be <em>five</em> frames long.
+Post-IVTC, that cycle must be reduced to <em>four</em> frames.</p>
+<p>However, patterns will often break in anime,
+as it’s not uncommon for studios to be editing 60i footage directly.
+This means that any splices made during that process may result in the cycle being broken,
+and will result in <em>orphan fields</em> being created.</p>
+<p><em>Orphan fields</em> are fields with no pairing field available to reconstruct the original frame with.
+They’re an artifact leftover from improper splicing and trimming,
+and can by nature no longer be losslessly restored.
+The most common method to handle those is to duplicate the previous frame.
+This, however, has the drawback of creating a small “hiccup” during playback
+if the scene has a lot of motion prior to the scenechange.</p>
+<h2><a class="header" href="#60i-and-variable-framerate-footage" id="60i-and-variable-framerate-footage">60i and Variable Framerate Footage</a></h2>
+<p>In the early digital era,
+a lot of studios were still experimenting with digital tooling.
+This included working directly on 60i video,
+as well as mixing different framerates together.</p>
+<p>A common example of editing done on 60i video is <em>interlaced credits</em>.
+When checking each individual field,
+sometimes you may notice that certain elements are unique in each field.
+These are <em>hard-interlaced</em>,
+and must be deinterlaced.
+This may not always be straight-forward however,
+as with for example interlaced credits, the underlying video is still 23.976 frame/s content,
+and deinterlacing may cause a lot of damage to it.
+There’s various different ways to handle deinterlacing such content,
+and the most common cases will be handled on their own pages.</p>
+<p><img src="gettingstarted/imgs/interlaced_credits.png" alt="An example of interlaced credits on top of 23.976 frame/s video" /></p>
+<p>In some rarer instances,
+certain animations or effects may also be animated at 29.97 frame/s.
+These will often play back completely fine on 60i video,
+and appear progressive.
+This may also extend to certain effects such as panning shots,
+zooms, background animations,
+or even video effects or CGI elements.
+In order to properly preserve those,
+you must output a Variable Framerate (VFR) clip
+or store frame time information in an external file
+and mux those into the video container after encoding.
+This means the scenes that are telecined must be marked as 23.976 frame/s post-IVTC,
+and the scenes that are animated at 29.97 frame/s must be marked as 29.97 frame/s.
+Any deinterlaced scenes where the temporal resolution has been increased
+must be marked as 59.94 frame/s.</p>
+<h2><a class="header" href="#additional-learning-resources" id="additional-learning-resources">Additional Learning Resources:</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Telecine">Telecine - Wikipedia</a></li>
+<li><a href="https://www.youtube.com/watch?v=DyqjTZHRdRs">CD / Frame Rate - Youtube</a></li>
+<li><a href="https://www.youtube.com/watch?v=5eu_KjKsnpM">CD / Interlacing - Youtube</a></li>
+</ul>
+<h1><a class="header" href="#limitations" id="limitations">Limitations</a></h1>
+<p>Before you get started,
+it’s important to be aware of the limitations that come with Wobbly.
+No software is perfect,
+and this holds true for Wobbly as well.</p>
+<h2><a class="header" href="#5-frame-cycles-only" id="5-frame-cycles-only">5-Frame Cycles Only</a></h2>
+<p>Wobbly is limited to 5-frame cycles.
+This means it can only ever be used for NTSC content
+(such as Japanese or North-Americans DVDs,
+see <a href="https://en.wikipedia.org/wiki/DVD_region_code#PAL/SECAM_vs._NTSC">this wikipedia page</a> for more information),
+and will not work on PAL/SECAM video.</p>
+<p>This also includes variable telecine cycles.
+Wobbly always assumes a clean 3:2 Pulldown algorithm
+was applied to the input clip,
+and no support is currently given for other patterns.</p>
+<h2><a class="header" href="#deinterlaced-footage" id="deinterlaced-footage">Deinterlaced Footage</a></h2>
+<p>Wobbly has no support for footage that was deinterlaced
+or pre-fieldmatched.
+Deinterlacing comes in many shapes and sizes,
+the most common of which is through filters
+such as YADIF (found in FFMpeg).
+These are destructive by nature
+and will not give Wobbly anything to work with.
+Another common example of deinterlaced footage
+is footage with blended fields
+(which often matches the original telecining pattern,
+such as AABBA).</p>
+<p><img src="gettingstarted/imgs/blended_fields.png" alt="An example of blended footage (Fate/EXTRA Extella OP1)" /></p>
+<p>Similarly,
+content that has its fields already matched
+and only requires decimation are not currently supported in Wobbly.
+It relies on knowing the fieldmatches
+to determine how a clip should be decimated.
+It simply does not know what to do with progressive content.</p>
+<h2><a class="header" href="#true-vfr" id="true-vfr">“True” VFR</a></h2>
+<p>Wobbly does not currently support <em>true</em> VFR.
+Decimation is strictly based on the telecine cycle,
+meaning that VFR ranges get rounded.
+This is a side-effect of Wobbly only supporting a very limited number of framerates
+(6, 12, 18, 24, 30).</p>
+<p>Similarly,
+Wobbly does not currently allow you to easily output 59.94 frame/s video.
+This can become an issue when you must deinterlace a scene
+and want to make use of the timecodes provided by Wobbly.</p>
+<h2><a class="header" href="#decimation-breaks" id="decimation-breaks">Decimation Breaks</a></h2>
+<p>This is a regression from YATTA.</p>
+<p>Due to the way footage was commonly edited
+during the early digital era,
+a lot of editing was done on telecined footage.
+This means you may get splices that results in extra frames being left in,
+ruining the decimation cycle.
+Wobbly will simply set it to a wrong framerate,
+whereas YATTA would automatically determine this was the case
+and add a decimation by itself.
+We cover how to do this manually in the <em><a href="gettingstarted///">Fixing the Framerate</a></em> section,
+but it’s something that should honestly be done automatically.</p>
+<h1><a class="header" href="#installation" id="installation">Installation</a></h1>
+<p>To install Wobbly, you must first navigate to its <a href="https://github.com/Setsugennoao/Wobbly/releases">download page</a>.
+The recommended version as of writing this guide is the <a href="https://github.com/Setsugennoao/Wobbly/">Setsugennoao fork, release v6-R2</a>.</p>
+<p>You can download the release by opening up the list of Assets
+and clicking on the zip file.
+It should start downloading Wobbly now.</p>
+<p>To continue, you must now unpack this zip file.
+Make sure you unpack it in a place you’re sure it won’t be moved from in the future!
+The easiest place to put it is in your Documents directory.</p>
+<h2><a class="header" href="#dependencies" id="dependencies">Dependencies</a></h2>
+<p>Wobbly has the following dependencies:</p>
+<ul>
+<li><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a></li>
+<li><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a></li>
+<li><a href="https://github.com/vapoursynth/dmetrics">DMetrics</a></li>
+<li><a href="https://github.com/dubhater/vapoursynth-fieldhint">FieldHint</a></li>
+<li><a href="https://github.com/AkarinVS/vapoursynth-plugin">L-SMASH-Works</a> (through Akarin)</li>
+<li><a href="https://github.com/dubhater/vapoursynth-scxvid">SCXVID</a></li>
+<li><a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">TDeintMod</a></li>
+<li><a href="https://github.com/vapoursynth/vivtc">vivtc</a></li>
+</ul>
+<p>You can verify it can find the plugins by opening Wobbly,
+hovering over the “Tools” dropdown menu at the top of the window,
+and clicking on “Check plugins”.</p>
+<p><img src="gettingstarted/imgs/check_plugins.png" alt="Checking installed plugins" /></p>
+<p>This will open up a window displaying the plugins it was able to find.</p>
+<p><img src="gettingstarted/imgs/installed_plugins.png" alt="Installed plugins" /></p>
+<h1><a class="header" href="#indexing-with-wibbly" id="indexing-with-wibbly">Indexing with Wibbly</a></h1>
+<p>For Wobbly to do its job,
+you first need to create a JSON file for it to read and write to.
+This file should contain source information,
+trims,
+matches,
+and many other metrics.
+This is where Wibbly comes in.
+Wibbly will run over a given file
+and gather the necessary metrics
+for wobbly to work properly.</p>
+<h2><a class="header" href="#loading-videos" id="loading-videos">Loading Videos</a></h2>
+<p>Wibbly consists of two main windows:</p>
+<ul>
+<li>The jobs window</li>
+<li>The video output window</li>
+</ul>
+<p><img src="wibbly/imgs/jobs_window.png" alt="The main job queue window" /></p>
+<p>The main jobs window is where you create metric collecting “jobs”.
+You can drag video and specific indexing files into this window,
+and by clicking on them
+you can choose which metric gathering operations you’d like to perform.</p>
+<p><img src="wibbly/imgs/dropdown_menu.png" alt="Dropdown menu for other windows" /></p>
+<p>You also open up different windows from this main window.
+It’s recommended you select every window
+so you can easily adjust settings on the fly.
+The state and geometry get stored in an ini file
+and will persist when you open up wibbly again next time.</p>
+<p>The video output shows a very simple output of the given video file.
+You can framestep or jump to a specific frame or time.
+When you first open up Wibbly,
+this window will be empty.
+To load a video,
+we first need to drag a video file into the jobs window.</p>
+<p><img src="wibbly/imgs/first_job.png" alt="Simple job" /></p>
+<p>Wibbly accepts the following inputs:</p>
+<ul>
+<li>Common video formats L-SMASH-Works can read (such as m2ts, mkv, etc.)</li>
+<li>DGIndexNV indexing files</li>
+<li>d2v indexing files</li>
+</ul>
+<p>For most DVDs,
+it’s highly recommended you use DGIndexNV.
+This will consistently be the most accurate,
+and also allow you to easily disable soft telecining if necessary.
+DGIndeNV requires an NVidia GPU,
+so if you don’t have one,
+you can use D2vWitch.
+How to use either program is outside of the scope of this guide.</p>
+<p>For Blu-ray files,
+DGIndexNV will still give you the most accurate results.
+However, you can also opt to use L-SMASH-Works instead.
+It will use L-SMASH-Works by default if you drag an m2ts or mkv file
+into the jobs window.</p>
+<h2><a class="header" href="#gathering-metrics" id="gathering-metrics">Gathering Metrics</a></h2>
+<p>Once you’ve indexed a video file,
+the video will show in the Video Output window.</p>
+<p><img src="wibbly/imgs/video_output.png" alt="Video output" /></p>
+<p>Before you begin,
+it’s a good idea to double-click on the current job inside the Jobs window
+to ensure it properly applies any settings you set to the Job.
+The first two things you want to do
+is trim and crop the video as necessary.</p>
+<p>When trimming,
+be aware that the trims are <em>inclusive</em>.
+This means that if you trim frames 0–100,
+frame 100 will be included in the trimmed clip.
+If you’re working with TV caps,
+you’ll want to make sure you trim out only the actual episode
+and ignore all the sponsorcards and advertisements.
+With DVDs, you may have indexed multiple episodes at once.
+Trim out only the episode you want to work on,
+and ignore the others.
+If you want to work on the other episodes,
+make sure you give each output file a unique name
+so you don’t accidentally overwrite them with the next metrics gathering!</p>
+<p>[//] &lt;&gt; (TODO: fact check what the proper mod is for the cropping section.)</p>
+<p>Cropping is done to get rid of the black bars on the sides of the video.
+Keeping those may mess with the metric gathering,
+so it’s safer to remove them.
+With YUV420/YV12 video,
+the final output image must be mod4,
+so you may need to crop slightly more
+to get rid of all the black bars.
+The Video Output window will update as you select crops,
+so you can see whether a crop is being applied properly immediately.</p>
+<p>[//] &lt;&gt; (TODO: More testing with the interlaced fades setting)</p>
+<p>Next, you select the threshold for interlaced fades detection.
+Interlaced fades are fading effects applied to a video
+that was telecined to 29.97 frame/s.
+These fades will be 29.97 frame/s as well,
+but the underlying animation will often be 23.976 frame/s,
+so we must pull them down.
+To determine a healthy threshold,
+locate an interlaced fade in your video
+and adjust the threshold until it catches the entire fade.
+Don’t make the threshold too low,
+or else it may catch non-fades by accident!</p>
+<p>Finally,
+you want to select the metrics to gather.
+These can be selected in the VFM window.
+You can leave most of these settings alone,
+but make sure you <em>always</em> tick “Enable DMetrics”.
+If your video is Bottom-Field-First,
+set “order” to “0”.
+Furthermore,
+if your source has a different telecining pattern for the chroma,
+untick “Chroma” in this menu as well.</p>
+<h2><a class="header" href="#running-your-jobs" id="running-your-jobs">Running Your Jobs</a></h2>
+<p>Once you’ve set all the settings
+and prepared your jobs as best you can,
+it’s time to execute them.
+In the Jobs window,
+you can select which operations to perform per job.
+To switch jobs,
+simply click on the job you want to change settings for
+inside the Jobs window.</p>
+<p>It’s recommended you gather metrics for every single option available.
+The only exceptions may be trimming or cropping if they’re not performed,
+or interlaced fades if you are absolutely certain there are none.
+This may speed up the metric gathering a bit,
+but it’s still safer to check for everything.</p>
+<p>Once you’ve made your choices
+and made sure everything is correct,
+click on the “Engage” button.
+A new window will pop up
+and show the estimated time until each job is done.</p>
+<p><img src="wibbly/imgs/gathering_metrics.png" alt="Running a job" /></p>
+<p>Once this is done,
+you will have a “wob” file
+in the location you’ve told it to save it
+(by default next to the source file).
+This file is simply a JSON file
+and contains all the metrics Wibbly has gathered for you.
+These will be read and modified by Wobbly.</p>
+<h1><a class="header" href="#writing-your-own-wibbly" id="writing-your-own-wibbly">Writing your own Wibbly</a></h1>
+<p>Wibbly, currently, is extremely slow.
+This is why it might not be a bad idea to write your own implementation
+or to use someone else’s.
+This page will explain what metrics Wibbly gathers,
+how to parse them,
+and how to make sure you have a Wobbly-compliant JSON file by the end of it.</p>
+<h2><a class="header" href="#existing-implementations" id="existing-implementations">Existing Implementations</a></h2>
+<p>TODO: write my own implementation and link it in here.</p>
+<h2><a class="header" href="#metrics" id="metrics">Metrics</a></h2>
+<p>TODO: Explain which metrics are gathered and how to parse them.</p>
+<h2><a class="header" href="#output-file" id="output-file">Output File</a></h2>
+<p>TODO: Explain how to format the output file.</p>
+<h1><a class="header" href="#using-wobbly" id="using-wobbly">Using Wobbly</a></h1>
+<p>Wobbly’s job is to act as a GUI to easily adjust fieldmatches.
+It makes use of the metrics collected by Wibbly to prepare a clip,
+and can process those to IVTC a clip.</p>
+<p>To get started,
+grab the “wob” JSON file you generated using Wibbly
+(or any other metrics gathering tool designed for wobbly)
+and drag it into the Wobbly window.</p>
+<h2><a class="header" href="#familiarizing-yourself-with-the-ui" id="familiarizing-yourself-with-the-ui">Familiarizing Yourself with the UI</a></h2>
+<p>Wobbly can be a bit difficult to work around for beginners.
+This is because it’s primarily built to work with <em>keybinds</em>.
+This is a lot faster than pressing a button on-screen for every single operation,
+and considering how many actions you must perform,
+this will save you a lot of time and effort.</p>
+<p>A list of keybinds can be found under the <em>Settings</em> tab.</p>
+<p><img src="wobbly/imgs/hotkeys.png" alt="The Keyboard Shortcuts tab" /></p>
+<p>Here is a quick table containing the relevant keybinds:</p>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>Ctrl + Up Arrow</td><td>Jump to next section</td></tr>
+<tr><td>Ctrl + Down Arrow</td><td>Jump to previous section</td></tr>
+<tr><td>Ctrl + Shift + Up Arrow</td><td>Jump to next frame with high mic</td></tr>
+<tr><td>Ctrl + Shift + Down Arrow</td><td>Jump to previous frame with high mic</td></tr>
+<tr><td>Up Arrow</td><td>Jump to next frame with high dmetrics</td></tr>
+<tr><td>Down Arrow</td><td>Jump to previous frame with high dmetrics</td></tr>
+<tr><td>Shift + Up Arrow</td><td>Jump to the next combed frame</td></tr>
+<tr><td>Shift + Down Arrow</td><td>Jump to the previous combed frame</td></tr>
+<tr><td>I</td><td>Start new section at current frame</td></tr>
+<tr><td>Ctrl + Q</td><td>Delete current section</td></tr>
+<tr><td>S</td><td>Cycle the current frame’s match</td></tr>
+<tr><td>Ctrl + S</td><td>Cycle through different patterns for the current section</td></tr>
+<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
+<tr><td>G</td><td>Jump to a specific frame (opens submenu)</td></tr>
+<tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
+<tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
+<tr><td>Ctrl + Z</td><td>Undo</td></tr>
+<tr><td>Ctrl + Y</td><td>Redo</td></tr>
+<tr><td>F5</td><td>Toggle preview mode (Source ↔ Preview)</td></tr>
+<tr><td>Ctrl + Num + +</td><td>Zoom in</td></tr>
+<tr><td>Ctrl + Num + -</td><td>Zoom out</td></tr>
+<tr><td>(Not bound by default)</td><td>Save Project</td></tr>
+</tbody></table>
+<p>These will be the shortcuts you’ll use most,
+so the sooner you can familiarize yourself with them,
+the better.
+You can always adjust them in this menu to your liking.</p>
+<p>Make sure you don’t accidentally spam Ctrl + S to save the project!
+This is by default bound to “Cycle through different patterns for the current section”.
+It may be worthwhile to replace this keybind
+if you’re scared you’ll accidentally cycle through sections instead of saving.</p>
+<h2><a class="header" href="#processing-the-clip" id="processing-the-clip">Processing the Clip</a></h2>
+<p>The first order of business is to make sure you process the project.
+Wobbly makes use of Wibbly’s metrics to make its decisions,
+but it depends on the scenechanges being correct.
+Before you do anything else,
+you’ll want to jump from section to section
+and make sure every section starts and ends on an actual scenechange.</p>
+<p>The following keybinds will be your new best friends while correcting scenechanges:</p>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>Ctrl + Up Arrow</td><td>Jump to next section</td></tr>
+<tr><td>Ctrl + Down Arrow</td><td>Jump to previous section</td></tr>
+<tr><td>I</td><td>Start new section at current frame</td></tr>
+<tr><td>Ctrl + Q</td><td>Delete current section</td></tr>
+<tr><td>Ctrl + Z</td><td>Undo</td></tr>
+</tbody></table>
+<p>The most straight-forward way to do this
+is to simply press <code>Ctrl + Up Arrow</code>
+and jump forwards until you find the start of a new section
+that is clearly not on a scenechange.</p>
+<p><img src="wobbly/imgs/wrong_scenechange.png" alt="Clearly not a scenechange" /></p>
+<p>You then delete this section by pressing <code>Ctrl + Q</code>,
+and rinse and repeat.</p>
+<p>You may sometimes find scenechanges being skipped.
+To fix those,
+you use the <code>Left Arrow</code> and <code>Right Arrow</code> to framestep,
+locate the first frame of the scene change,
+and press <code>I</code> on your keyboard.</p>
+<p>It’s important for the processing to occur
+on sections that are larger than 10 frames.
+If you have for example a lot of flickers,
+it’s probably worthwhile to just create one larger section containing all of them,
+rather than a lot of smaller sections,
+as that may introduce issues during the processing.
+A simple way to look at it is that every section equates a scene,
+with a cut made on the start and end of it.</p>
+<p>When dealing with fades to and from scenes,
+you’ll want to put the scene change somewhere in the middle.
+The first frame before a fade in is usually the best,
+unless it fades in from a solid colour with a clear scenechange.
+To deal with crossfades
+(that is, two scenes that fade into each other
+without a solid color inbetween)
+where the pattern differs between scenes,
+you can try creating a new section
+that captures just the fade.
+Wobbly may be able to accurately decimate that for you.
+If the pattern remains the same,
+there is no reason to do this.</p>
+<p>You follow these procedures throughout the entire clip,
+creating and deleting sections as necessary.
+Once you’re done,
+you can finally process the clip.
+Navigate to the Pattern Guessing window.</p>
+<p><img src="wobbly/imgs/pattern_guessing.png" alt="The Pattern Guessing window" /></p>
+<p>You’ll want to make sure you are using “From mics+dmetrics”
+with an <em>Edge Cutoff</em> of 1 frame.
+It’s not recommended you adjust the <em>Minimum Length</em>.
+For patterns,
+you’ll only want to select “CCCNN”.
+For decimation,
+pick “First duplicate”.
+Then finally,
+click “Process project”
+(and make absolutely sure to NOT press that button again,
+as this will ruin your project file).
+It will return a list of problem sections like this:</p>
+<p><img src="wobbly/imgs/ambiguous_patterns.png" alt="Ambiguous patterns" /></p>
+<h2><a class="header" href="#fixing-the-failures" id="fixing-the-failures">Fixing the Failures</a></h2>
+<p>There are two kinds of pattern guessing failures:</p>
+<ul>
+<li>Section too short</li>
+</ul>
+<p>The section is too short for the guessing method.
+This is defined by the “Minimum length” setting.
+To fix this,
+double-click on the failed pattern guess in the list,
+adjust the section so it’s larger than or equal to the minimum length,
+and then click “Process current section”.
+If you did this properly,
+it should remve the section from the list.</p>
+<ul>
+<li>Ambiguous pattern</li>
+</ul>
+<p>Indicates that Wobbly was unable to find the correct pattern.
+There can be multiple reasons behind this,
+but it most often means that you either did not set your section correctly,
+or that section can not be IVTC’d properly.</p>
+<p>For every ambiguous pattern,
+you’ll want to manually fix the pattern.
+You can do this by double-clicking the failed guess in the list,
+and then cycle through the pattern using <code>Ctrl + S</code> by default.
+Note that this won’t remove the section from the list.</p>
+<p>If you have a section that you are sure is 29.97 frame/s,
+you can adjust the pattern in the “Pattern editor” window.
+Set it to <em>30 fps</em> and press <code>Ctrl + S</code>.
+You’ll also want to apply this to any scene that requires specific post-filtering in your script.
+This can be for example 59.94 frame/s credits on top of 23.976 frame/s video
+(which is very common for Opening and Ending themes),
+or scenes you can’t match properly
+and must be pulled down to 23.976 frame/s.
+<strong>Make sure you set it back to <em>24 fps</em>
+after you’ve dealt with every known 29.97 frame/s scene!</strong></p>
+<h2><a class="header" href="#fixing-the-framerates" id="fixing-the-framerates">Fixing the Framerates</a></h2>
+<p>Now that you’ve made most of your matches,
+navigate to the “Frame rates” window.
+It’s easiest to go one frame rate at a time.
+First,
+select the “30p” checkbox.</p>
+<p><img src="wobbly/imgs/framerates.png" alt="Framerates" /></p>
+<p>A list of useful keybinds for this section:</p>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
+</tbody></table>
+<h3><a class="header" href="#handling-30p-scenes" id="handling-30p-scenes">Handling 30p Scenes</a></h3>
+<p>29.97 frame/s framerates can show up for a couple reasons:</p>
+<ul>
+<li>You set a section to 29.97 frame/s yourself</li>
+</ul>
+<p>This should be done on any scenes that are native 29.97 frame/s or 59.94 frame/s,
+or requires pulldown of some kind
+(overlaid 29.97 frame/s credits on 23.976 frame/s content, for example).</p>
+<ul>
+<li>Pattern changes on scenechanges leave you with an extra frame</li>
+</ul>
+<p><img src="wobbly/imgs/extra_frame.png" alt="An extra frame is left" /></p>
+<p>This is not an uncommon occurrence,
+as with anime the editing is often done on the telecined video.
+The easiest fix for this is to simply decimate one of the extra frames.
+This ensures you keep a constant frame rate.
+This option is especially easy to take if the final frame in a section has an orphan field,
+as the easiest way to fix those is to drop it anyway.
+Another option is to keep that section 29.97 frame/s,
+though you may cause desyncs during timing/subtitle syncing with other subtitles this way.</p>
+<p>Whichever option you choose,
+it pays dividends to be consistent.
+One such consistency you can take
+is to always drop the frame with an orphan field if possible
+(these will almost always be marked as <em>B</em> matches,
+so they’re easy to spot),
+and otherwise,
+drop the frame before a scene change if there is one.
+This is especially useful when IVTCing recurring clips,
+such as Opening or Ending themes,
+midcards,
+etc.</p>
+<h3><a class="header" href="#handling-18p-scenes" id="handling-18p-scenes">Handling 18p Scenes</a></h3>
+<p>Once you have fixed all the wrong <em>30p</em> sections,
+we move on to <em>18p</em>.
+<em>18p</em> is basically always going to be incorrect.
+As such,
+there should be 0 instances of <em>18p</em> cycles left
+once you’re done with IVTCing.</p>
+<p>Usually 18p scenes happen because of awkward pattern changes across scenes
+(or if you’re unlucky,
+within the same scene),
+or because an orphan field gets dropped which breaks the framerate.
+This means that in certain situations,
+you may be forced to restore a duplicated frame
+to ensure you still have a consistent framerate.
+This is why it’s recommended you apply the same consistency rule as with 30p scenes,
+but some of it in reverse.
+You restore orphan fields if possible,
+but at scenechanges,
+you restore the first frame of a scene if necessary
+(unless one scene has a pan and the other does not).
+This is because a “stutter” at the end of a scene is easier to spot
+than a stutter at the very start of a scene.
+If the 18p cycle occurs elsewhere,
+use your best judgment.
+Generally speaking,
+you can’t really go wrong if it’s for example in the middle of a scene.</p>
+<h3><a class="header" href="#handling-12p-and-6p-scenes" id="handling-12p-and-6p-scenes">Handling 12p and 6p Scenes</a></h3>
+<p>12p and 6p,
+simply put,
+only occur when you’ve made a mistake with manual decimations.
+You can simply fix them and then handle them as you would 18p framerates
+once you restore enough frames.</p>
+<p>By the end of this,
+you should have a list of 29.97 frame/s scenes
+you manually and knowingly set this way.</p>
+<p><img src="wobbly/imgs/framerates_fixed.png" alt="Framerates fixed" /></p>
+<h2><a class="header" href="#cleaning-up" id="cleaning-up">Cleaning Up</a></h2>
+<p>Useful keybinds for this section:</p>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>S</td><td>Cycle the current frame’s match</td></tr>
+<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
+<tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
+<tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
+</tbody></table>
+<h3><a class="header" href="#leftover-combing" id="leftover-combing">Leftover Combing</a></h3>
+<p>Finally,
+after matching scenes and forcing framerates,
+you still want to deal with leftover combing.
+Open the “Combed frames” menu.</p>
+<p><img src="wobbly/imgs/combed_frames.png" alt="A list of all the combed frames found" /></p>
+<p>Before you do anything,
+click “Refresh”.
+This will perform another search through the clip
+to find any remaining combed frames.
+This may take a couple of minutes to finish.</p>
+<p><img src="wobbly/imgs/finding_combs.png" alt="Finding combed frames..." /></p>
+<p>You can now double-click on all the found combed frames,
+or jump to the next combed frame using .
+For any combed frame,
+you can press <code>S</code> to cycle through fieldhints.
+If every cycle returns a combed frames,
+consider adjusting the decimated frame
+(using <code>D</code> to swap between decimated and not,
+making sure you don’t ruin the framerates you just fixed),
+or pulling it down in your filterchain later.</p>
+<p>Another thing to take into account is that this will also find telecined fades.
+You typically do not want to perform fieldmatching on the fade itself,
+but just the underlying animation.
+If the caught combed frame is caused by the fade,
+ignore it
+and process it with a filter meant to deal with those
+in your filterchain later.</p>
+<h3><a class="header" href="#freezeframing" id="freezeframing">Freezeframing</a></h3>
+<p>If you find scenes of a duplicated clip
+(that was not decimated due to being animated on twos/threes/fours)
+that has very heavy compression artifacting,
+it might be worth it to freezeframe it with either the next frame
+(<code>Shift + F</code>)
+or the previous frame
+(<code>Ctrl + F</code>).
+You can adjust these later in the “Frozen frames” window.
+This usually won’t be applicable or worth it
+unless you’re dealing with <em>very</em> starved video
+and heavy MPEG2 blocking.</p>
+<p>Your clip should now be ready to be used in your own filterchain!</p>
+<h1><a class="header" href="#making-use-of-the-wobbly-output" id="making-use-of-the-wobbly-output">Making Use of the Wobbly Output</a></h1>
+<p>There are two straightforward ways to make use of the clip you’ve just fixed up in Wobbly.</p>
+<h2><a class="header" href="#from-wobbly-itself" id="from-wobbly-itself">From Wobbly Itself</a></h2>
+<p>Within Wobbly’s “Project” dropdown menu,
+you can save a script.
+This will output a “vpy” file
+next to the Wobbly JSON file.</p>
+<p><img src="wobbly/imgs/save_script.png" alt="Dropdown Options" /></p>
+<p><img src="wobbly/imgs/generated_script.png" alt="Generated Script" /></p>
+<p>You can simply stick the contents of this script into your own script and work from there.</p>
+<h2><a class="header" href="#usin-an-external-tool" id="usin-an-external-tool">Usin an External Tool</a></h2>
+<p>TODO: I would describe vswobbly here... IF I’D FINISHED WRITING IT!</p>
+<p>Want to contribute?
+Caught a topic we should’ve <em>reaaaalllyyyy</em> caught ourselves but didn’t?
+Leave an Issue (or heck, even a PR!)
+on the GitHub repo and we’ll check it out!</p>
+<p>Please make sure you use <a href="https://docs.fluidattacks.com/development/writing/slb/">Semantic Line breaks</a> in your PRs.<br>
+If you get rid of them in your PR,
+I will rid you of your spine.<br>
+The only currently accepted English dialect is <em>American English</em>.<br></p>
+<p>We currently do not accept PRs for very minute changes.
+Please write an Issue instead.</p>
+<h2><a class="header" href="#notable-contributors" id="notable-contributors">Notable Contributors</a></h2>
+<p>Guide:</p>
+<ul>
+<li>LightArrowsEXE (Primary author)</li>
+<li>Zewia (Proofreader, knows the ins and outs better than I do)</li>
+</ul>
+<p>Development:</p>
+<ul>
+<li>Myrsloik (YATTA and Wobbly developer and creator)</li>
+<li>Setsugennoao (Current Wobbly maintainer)</li>
+<li>arch1t3cht (Added the undo keybind, the best update Wobbly has ever received (<em>real and factual</em>))</li>
+</ul>
+<h2><a class="header" href="#disclaimer" id="disclaimer">Disclaimer</a></h2>
+<h3><a class="header" href="#accountability-for-content" id="accountability-for-content">Accountability for content</a></h3>
+<p>The contents of our pages have been created with the utmost care.
+However, we cannot guarantee the contents’ accuracy, completeness or
+topicality.
+According to statutory provisions, we are furthermore responsible for our own
+content on these web pages.
+In this matter, please note that we are not obliged to monitor the transmitted
+or saved information of third parties, or investigate circumstances pointing to
+illegal activity.
+Our obligations to remove or block the use of information under generally
+applicable laws remain unaffected by this as per
+§§ 8 to 10 of the Telemedia Act (TMG).</p>
+<h3><a class="header" href="#accountability-for-links" id="accountability-for-links">Accountability for links</a></h3>
+<p>Responsibility for the content of external links (to web pages of third parties)
+lies solely with the operators of the linked pages.
+No violations were evident to us at the time of linking.
+Should any legal infringement become known to us,
+we will remove the respective link immediately.</p>
+<h1><a class="header" href="#privacy-policy" id="privacy-policy">Privacy Policy</a></h1>
+<ol>
+<li>
+<p>This page does not store any of your data by itself.</p>
+</li>
+<li>
+<p>This project is hosted on GitHub.</p>
+<p><a href="https://help.github.com/en/articles/github-privacy-statement">GitHub Privacy Policy</a></p>
+<p>GitHub may store information about your visit in the form of log files.
+Read the privacy policy of GitHub for further information.</p>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

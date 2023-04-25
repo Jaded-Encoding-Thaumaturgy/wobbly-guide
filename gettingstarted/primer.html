@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Telecining - Wobbly Guide</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        
+        <link rel="stylesheet" href=".././theme/catppuccin-highlight.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../../index.html">About</a></li><li class="chapter-item expanded "><a href="../gettingstarted/primer.html" class="active">Telecining</a></li><li class="chapter-item expanded "><a href="../gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="../gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="../wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded "><a href="../wibbly/implementation.html">Different Implementations</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="../wobbly/workflow.html">Standard Workflow</a></li><li class="chapter-item expanded "><a href="../wobbly/output.html">Using Wobbly's Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="../impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="../privacy-policy.html">Privacy Policy</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Wobbly Guide</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/Irrational-Encoding-Wizardry/wobbly-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#a-primer-on-telecining" id="a-primer-on-telecining">A Primer on Telecining</a></h1>
+<p>When working on DVDs,
+you will no doubt come across a fairly annoying artifact:
+combing.</p>
+<p><img src="imgs/combed_frame.png" alt="A classic example of combing" /></p>
+<p>Virtually every DVD has these,
+and in some cases  you may even find them on Blu-rays!</p>
+<p>What you’re seeing here is called <em>telecining</em>.
+It’s very common for digital anime to be produced at a constant 23.976 frame/s
+However, old analog TVs would always broadcast video at 29.97 frame/s.
+This became a problem for anything that wasn’t that exact framerate,
+such as a lot of movies and TV series,
+and, indeed, most anime.</p>
+<h2><a class="header" href="#telecining-patterns" id="telecining-patterns">Telecining Patterns</a></h2>
+<p>In order to fit within that constraint,
+telecining patterns were conceived.
+For regular anime framerates,
+there are four frames of the original animation (also known as FILM)
+for every five frames of 29.97 frame/s video,
+as shown with the following simple equation:</p>
+<p>$$
+\frac{23.976}{29.97} = \frac{4}{5}
+$$</p>
+<p>To deal with this,
+many studios have been exploiting the interlaced nature of 60Hz video.
+In interlaced video,
+every frame is split up into two incomplete images,
+also known as <em>fields</em>.
+Each field takes up either the even or odd rows of a frame.
+By abusing how this works,
+studios have been able to fit 23.976 video into 29.97
+by splitting each frame up into fields and duplicating them as necessary.</p>
+<p>To achieve a clean 23.976 → 29.97 frame/s conversion,
+4 frames must be represented as 10 fields.
+This is done by duplicating fields following a set pattern.
+Assuming each frame in a cycle is labelled alphabetically,
+you get frames A, B, C, and D.
+When telecining,
+the fields of these frames will often alternate like so:</p>
+<p>$$
+\frac{A - A - B -  B -  B -  C -  C -  D - D - D}{2 - 3 - 2 -3}
+$$</p>
+<p>This telecining operation is called <em>3:2 pulldown</em>,
+and is the most common form of telecining there is for anime.</p>
+<p><img src="imgs/3_2_pulldown.png" alt="A classic example of 3:2 pulldown" /></p>
+<p>Other forms of pulldown exist,
+but those are rarely used in any kind of video source
+you’ll end up using when encoding anime.
+The only exception may be PAL DVDs,
+but due to the nature of trying to fit 23.976 → 25 being so difficult,
+these will often be a lot harder to undo
+(and more crucially,
+Wobbly does not currently offer support for these kinds of patterns).</p>
+<h2><a class="header" href="#telecining-vs-interlacing" id="telecining-vs-interlacing">Telecining vs. Interlacing</a></h2>
+<p>Interlacing and telecining are often mixed up in common vernecular.
+However, it’s very important to understand the differences between the two prior to filtering,
+and to be able to diagnose which frames make use of which.</p>
+<p><em>Interlacing</em> is,
+in essence, the combing-like artifact you see,
+even with telecining.
+The difference is that with a fully interlaced video,
+<em>there are no fields to match together</em>.
+Every field is unique,
+so the proper way to handle these is to deinterlace them
+and double the temporal resolution.</p>
+<p><em>Telecining</em> follows a predictable pattern
+and is used to convert a lower framerate into a higher one
+(using for example the aforementioned 3:2 pulldown).
+Certain frames may be interlaced,
+but you are not required to deinterlace them.
+Because the video was originally of a lower framerate
+and a consistent pattern has been applied to increase it,
+the original frames can be nigh-losslessly restored.</p>
+<p>When deinterlacing,
+what you’re doing is splitting up the video frames into fields
+and interpolating them up into full frames.
+Every field is half the vertical resolution of the video,
+so when deinterlacing a frame you’re effectively throwing out half the vertical resolution
+and trying to recreate what it may have looked like.
+With telecined content,
+this does more harm than trying to reconstruct the original frames by matching the fields
+and is thus not preferable
+unless you’re dealing with post-processing that broke the pattern.</p>
+<h2><a class="header" href="#cycles-and-pattern-breaking" id="cycles-and-pattern-breaking">Cycles and Pattern Breaking</a></h2>
+<p>When Inverse Telecining (also known as IVTC),
+it helps a lot to think of the video in terms of <em>cycles</em>.
+Within a telecined 29.97 frame/s video,
+assuming the source video is 23.976 frame/s,
+each cycle will be <em>five</em> frames long.
+Post-IVTC, that cycle must be reduced to <em>four</em> frames.</p>
+<p>However, patterns will often break in anime,
+as it’s not uncommon for studios to be editing 60i footage directly.
+This means that any splices made during that process may result in the cycle being broken,
+and will result in <em>orphan fields</em> being created.</p>
+<p><em>Orphan fields</em> are fields with no pairing field available to reconstruct the original frame with.
+They’re an artifact leftover from improper splicing and trimming,
+and can by nature no longer be losslessly restored.
+The most common method to handle those is to duplicate the previous frame.
+This, however, has the drawback of creating a small “hiccup” during playback
+if the scene has a lot of motion prior to the scenechange.</p>
+<h2><a class="header" href="#60i-and-variable-framerate-footage" id="60i-and-variable-framerate-footage">60i and Variable Framerate Footage</a></h2>
+<p>In the early digital era,
+a lot of studios were still experimenting with digital tooling.
+This included working directly on 60i video,
+as well as mixing different framerates together.</p>
+<p>A common example of editing done on 60i video is <em>interlaced credits</em>.
+When checking each individual field,
+sometimes you may notice that certain elements are unique in each field.
+These are <em>hard-interlaced</em>,
+and must be deinterlaced.
+This may not always be straight-forward however,
+as with for example interlaced credits, the underlying video is still 23.976 frame/s content,
+and deinterlacing may cause a lot of damage to it.
+There’s various different ways to handle deinterlacing such content,
+and the most common cases will be handled on their own pages.</p>
+<p><img src="imgs/interlaced_credits.png" alt="An example of interlaced credits on top of 23.976 frame/s video" /></p>
+<p>In some rarer instances,
+certain animations or effects may also be animated at 29.97 frame/s.
+These will often play back completely fine on 60i video,
+and appear progressive.
+This may also extend to certain effects such as panning shots,
+zooms, background animations,
+or even video effects or CGI elements.
+In order to properly preserve those,
+you must output a Variable Framerate (VFR) clip
+or store frame time information in an external file
+and mux those into the video container after encoding.
+This means the scenes that are telecined must be marked as 23.976 frame/s post-IVTC,
+and the scenes that are animated at 29.97 frame/s must be marked as 29.97 frame/s.
+Any deinterlaced scenes where the temporal resolution has been increased
+must be marked as 59.94 frame/s.</p>
+<h2><a class="header" href="#additional-learning-resources" id="additional-learning-resources">Additional Learning Resources:</a></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Telecine">Telecine - Wikipedia</a></li>
+<li><a href="https://www.youtube.com/watch?v=DyqjTZHRdRs">CD / Frame Rate - Youtube</a></li>
+<li><a href="https://www.youtube.com/watch?v=5eu_KjKsnpM">CD / Interlacing - Youtube</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../gettingstarted/limitations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../gettingstarted/limitations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
