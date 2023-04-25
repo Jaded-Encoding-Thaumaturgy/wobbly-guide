@@ -8,7 +8,7 @@
 - [Installation](./gettingstarted/installation.md)
 
 --------
-[//]: <> (Wibbly usage)
+[//]: <> (Pages about Wibbly usage)
 
 # Wibbly
 
@@ -16,7 +16,7 @@
 - [Different Implementations](./wibbly/implementation.md)
 
 --------
-[//]: <> (Wobbly usage)
+[//]: <> (Pages about Wobbly usage)
 
 # Wobbly
 
