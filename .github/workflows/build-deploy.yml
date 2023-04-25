@@ -42,4 +42,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
-          cname: wobbly-guide
+          cname: wobbly.encode.moe
