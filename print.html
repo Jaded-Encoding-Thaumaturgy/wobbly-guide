@@ -4,39 +4,25 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Wobbly Guide</title>
-        
         <meta name="robots" content="noindex" />
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="favicon.svg">
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        
         <link rel="stylesheet" href="css/print.css" media="print">
-        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -44,26 +30,22 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="./theme/catppuccin.css">
-        
         <link rel="stylesheet" href="./theme/catppuccin-highlight.css">
-        
 
-        
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -79,7 +61,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -91,12 +73,14 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -112,8 +96,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -126,36 +109,30 @@
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Wobbly Guide</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                         <a href="https://github.com/Irrational-Encoding-Wizardry/wobbly-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -163,10 +140,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -176,7 +152,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#the-iew-guide-to-wobbly" id="the-iew-guide-to-wobbly">The IEW Guide to Wobbly</a></h1>
+                        <h1 id="the-iew-guide-to-wobbly"><a class="header" href="#the-iew-guide-to-wobbly">The IEW Guide to Wobbly</a></h1>
 <p>Learn how to use Wobbly, <em>the</em> Vapoursynth manual IVTCing tool.
 This guide covers the basic use-cases,
 recommend settings,
@@ -188,15 +164,15 @@ or press your <kbd>→</kbd> key
 to go to the next page,
 or you can browse the page index on the left.</p>
 <p>The project is <a href="https://github.com/Irrational-Encoding-Wizardry/wobbly-guide">hosted on Github</a>.</p>
-<h2><a class="header" href="#getting-started" id="getting-started">Getting started</a></h2>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h2>
 <p>New to Wobbly or IVTC/Deinterlacing in general?
 Check out our [quick primer][primer] to get a basic understanding
 of the relevant topic and theories.</p>
-<h2><a class="header" href="#contributing" id="contributing">Contributing</a></h2>
+<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
 <p>Spot a typo or problem with the guide?
 Want to contribute to Wobbly?
 Check the <a href="../../wobbly-docs/src/development/CONTRIBUTING.html">contribute</a> section!</p>
-<h2><a class="header" href="#disclaimers" id="disclaimers">Disclaimers</a></h2>
+<h2 id="disclaimers"><a class="header" href="#disclaimers">Disclaimers</a></h2>
 <p>This guide may not always be entirely up-to-date with what newer commits offer.
 Programs may be in constant development,
 so if something is outdated or there are any errors in this book,
@@ -204,7 +180,7 @@ please <a href="../../wobbly-docs/src/development/contact.html">contact us</a>!<
 <p>This is neither a Vapoursynth nor a filtering guide.
 This book explains how to use a Vapoursynth tool,
 but figuring out how to make use of the output is up to you.</p>
-<h1><a class="header" href="#a-primer-on-telecining" id="a-primer-on-telecining">A Primer on Telecining</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="a-primer-on-telecining"><a class="header" href="#a-primer-on-telecining">A Primer on Telecining</a></h1>
 <p>When working on DVDs,
 you will no doubt come across a fairly annoying artifact:
 combing.</p>
@@ -217,7 +193,7 @@ However, old analog TVs would always broadcast video at 29.97 frame/s.
 This became a problem for anything that wasn’t that exact framerate,
 such as a lot of movies and TV series,
 and, indeed, most anime.</p>
-<h2><a class="header" href="#telecining-patterns" id="telecining-patterns">Telecining Patterns</a></h2>
+<h2 id="telecining-patterns"><a class="header" href="#telecining-patterns">Telecining Patterns</a></h2>
 <p>In order to fit within that constraint,
 telecining patterns were conceived.
 For regular anime framerates,
@@ -257,7 +233,7 @@ but due to the nature of trying to fit 23.976 → 25 being so difficult,
 these will often be a lot harder to undo
 (and more crucially,
 Wobbly does not currently offer support for these kinds of patterns).</p>
-<h2><a class="header" href="#telecining-vs-interlacing" id="telecining-vs-interlacing">Telecining vs. Interlacing</a></h2>
+<h2 id="telecining-vs-interlacing"><a class="header" href="#telecining-vs-interlacing">Telecining vs. Interlacing</a></h2>
 <p>Interlacing and telecining are often mixed up in common vernecular.
 However, it’s very important to understand the differences between the two prior to filtering,
 and to be able to diagnose which frames make use of which.</p>
@@ -287,7 +263,7 @@ With telecined content,
 this does more harm than trying to reconstruct the original frames by matching the fields
 and is thus not preferable
 unless you’re dealing with post-processing that broke the pattern.</p>
-<h2><a class="header" href="#cycles-and-pattern-breaking" id="cycles-and-pattern-breaking">Cycles and Pattern Breaking</a></h2>
+<h2 id="cycles-and-pattern-breaking"><a class="header" href="#cycles-and-pattern-breaking">Cycles and Pattern Breaking</a></h2>
 <p>When Inverse Telecining (also known as IVTC),
 it helps a lot to think of the video in terms of <em>cycles</em>.
 Within a telecined 29.97 frame/s video,
@@ -304,7 +280,7 @@ and can by nature no longer be losslessly restored.
 The most common method to handle those is to duplicate the previous frame.
 This, however, has the drawback of creating a small “hiccup” during playback
 if the scene has a lot of motion prior to the scenechange.</p>
-<h2><a class="header" href="#60i-and-variable-framerate-footage" id="60i-and-variable-framerate-footage">60i and Variable Framerate Footage</a></h2>
+<h2 id="60i-and-variable-framerate-footage"><a class="header" href="#60i-and-variable-framerate-footage">60i and Variable Framerate Footage</a></h2>
 <p>In the early digital era,
 a lot of studios were still experimenting with digital tooling.
 This included working directly on 60i video,
@@ -335,18 +311,18 @@ This means the scenes that are telecined must be marked as 23.976 frame/s post-I
 and the scenes that are animated at 29.97 frame/s must be marked as 29.97 frame/s.
 Any deinterlaced scenes where the temporal resolution has been increased
 must be marked as 59.94 frame/s.</p>
-<h2><a class="header" href="#additional-learning-resources" id="additional-learning-resources">Additional Learning Resources:</a></h2>
+<h2 id="additional-learning-resources"><a class="header" href="#additional-learning-resources">Additional Learning Resources:</a></h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Telecine">Telecine - Wikipedia</a></li>
 <li><a href="https://www.youtube.com/watch?v=DyqjTZHRdRs">CD / Frame Rate - Youtube</a></li>
 <li><a href="https://www.youtube.com/watch?v=5eu_KjKsnpM">CD / Interlacing - Youtube</a></li>
 </ul>
-<h1><a class="header" href="#limitations" id="limitations">Limitations</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="limitations"><a class="header" href="#limitations">Limitations</a></h1>
 <p>Before you get started,
 it’s important to be aware of the limitations that come with Wobbly.
 No software is perfect,
 and this holds true for Wobbly as well.</p>
-<h2><a class="header" href="#5-frame-cycles-only" id="5-frame-cycles-only">5-Frame Cycles Only</a></h2>
+<h2 id="5-frame-cycles-only"><a class="header" href="#5-frame-cycles-only">5-Frame Cycles Only</a></h2>
 <p>Wobbly is limited to 5-frame cycles.
 This means it can only ever be used for NTSC content
 (such as Japanese or North-Americans DVDs,
@@ -356,7 +332,7 @@ and will not work on PAL/SECAM video.</p>
 Wobbly always assumes a clean 3:2 Pulldown algorithm
 was applied to the input clip,
 and no support is currently given for other patterns.</p>
-<h2><a class="header" href="#deinterlaced-footage" id="deinterlaced-footage">Deinterlaced Footage</a></h2>
+<h2 id="deinterlaced-footage"><a class="header" href="#deinterlaced-footage">Deinterlaced Footage</a></h2>
 <p>Wobbly has no support for footage that was deinterlaced
 or pre-fieldmatched.
 Deinterlacing comes in many shapes and sizes,
@@ -375,7 +351,7 @@ and only requires decimation are not currently supported in Wobbly.
 It relies on knowing the fieldmatches
 to determine how a clip should be decimated.
 It simply does not know what to do with progressive content.</p>
-<h2><a class="header" href="#true-vfr" id="true-vfr">“True” VFR</a></h2>
+<h2 id="true-vfr"><a class="header" href="#true-vfr">“True” VFR</a></h2>
 <p>Wobbly does not currently support <em>true</em> VFR.
 Decimation is strictly based on the telecine cycle,
 meaning that VFR ranges get rounded.
@@ -385,7 +361,7 @@ This is a side-effect of Wobbly only supporting a very limited number of framera
 Wobbly does not currently allow you to easily output 59.94 frame/s video.
 This can become an issue when you must deinterlace a scene
 and want to make use of the timecodes provided by Wobbly.</p>
-<h2><a class="header" href="#decimation-breaks" id="decimation-breaks">Decimation Breaks</a></h2>
+<h2 id="decimation-breaks"><a class="header" href="#decimation-breaks">Decimation Breaks</a></h2>
 <p>This is a regression from YATTA.</p>
 <p>Due to the way footage was commonly edited
 during the early digital era,
@@ -397,7 +373,7 @@ whereas YATTA would automatically determine this was the case
 and add a decimation by itself.
 We cover how to do this manually in the <em><a href="gettingstarted///">Fixing the Framerate</a></em> section,
 but it’s something that should honestly be done automatically.</p>
-<h1><a class="header" href="#installation" id="installation">Installation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <p>To install Wobbly, you must first navigate to its <a href="https://github.com/Setsugennoao/Wobbly/releases">download page</a>.
 The recommended version as of writing this guide is the <a href="https://github.com/Setsugennoao/Wobbly/">Setsugennoao fork, release v6-R2</a>.</p>
 <p>You can download the release by opening up the list of Assets
@@ -406,7 +382,7 @@ It should start downloading Wobbly now.</p>
 <p>To continue, you must now unpack this zip file.
 Make sure you unpack it in a place you’re sure it won’t be moved from in the future!
 The easiest place to put it is in your Documents directory.</p>
-<h2><a class="header" href="#dependencies" id="dependencies">Dependencies</a></h2>
+<h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
 <p>Wobbly has the following dependencies:</p>
 <ul>
 <li><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a></li>
@@ -424,7 +400,7 @@ and clicking on “Check plugins”.</p>
 <p><img src="gettingstarted/imgs/check_plugins.png" alt="Checking installed plugins" /></p>
 <p>This will open up a window displaying the plugins it was able to find.</p>
 <p><img src="gettingstarted/imgs/installed_plugins.png" alt="Installed plugins" /></p>
-<h1><a class="header" href="#indexing-with-wibbly" id="indexing-with-wibbly">Indexing with Wibbly</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="indexing-with-wibbly"><a class="header" href="#indexing-with-wibbly">Indexing with Wibbly</a></h1>
 <p>For Wobbly to do its job,
 you first need to create a JSON file for it to read and write to.
 This file should contain source information,
@@ -435,7 +411,7 @@ This is where Wibbly comes in.
 Wibbly will run over a given file
 and gather the necessary metrics
 for wobbly to work properly.</p>
-<h2><a class="header" href="#loading-videos" id="loading-videos">Loading Videos</a></h2>
+<h2 id="loading-videos"><a class="header" href="#loading-videos">Loading Videos</a></h2>
 <p>Wibbly consists of two main windows:</p>
 <ul>
 <li>The jobs window</li>
@@ -478,7 +454,7 @@ DGIndexNV will still give you the most accurate results.
 However, you can also opt to use L-SMASH-Works instead.
 It will use L-SMASH-Works by default if you drag an m2ts or mkv file
 into the jobs window.</p>
-<h2><a class="header" href="#gathering-metrics" id="gathering-metrics">Gathering Metrics</a></h2>
+<h2 id="gathering-metrics"><a class="header" href="#gathering-metrics">Gathering Metrics</a></h2>
 <p>Once you’ve indexed a video file,
 the video will show in the Video Output window.</p>
 <p><img src="wibbly/imgs/video_output.png" alt="Video output" /></p>
@@ -532,7 +508,7 @@ set “order” to “0”.
 Furthermore,
 if your source has a different telecining pattern for the chroma,
 untick “Chroma” in this menu as well.</p>
-<h2><a class="header" href="#running-your-jobs" id="running-your-jobs">Running Your Jobs</a></h2>
+<h2 id="running-your-jobs"><a class="header" href="#running-your-jobs">Running Your Jobs</a></h2>
 <p>Once you’ve set all the settings
 and prepared your jobs as best you can,
 it’s time to execute them.
@@ -559,20 +535,20 @@ in the location you’ve told it to save it
 This file is simply a JSON file
 and contains all the metrics Wibbly has gathered for you.
 These will be read and modified by Wobbly.</p>
-<h1><a class="header" href="#writing-your-own-wibbly" id="writing-your-own-wibbly">Writing your own Wibbly</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="writing-your-own-wibbly"><a class="header" href="#writing-your-own-wibbly">Writing your own Wibbly</a></h1>
 <p>Wibbly, currently, is extremely slow.
 This is why it might not be a bad idea to write your own implementation
 or to use someone else’s.
 This page will explain what metrics Wibbly gathers,
 how to parse them,
 and how to make sure you have a Wobbly-compliant JSON file by the end of it.</p>
-<h2><a class="header" href="#existing-implementations" id="existing-implementations">Existing Implementations</a></h2>
+<h2 id="existing-implementations"><a class="header" href="#existing-implementations">Existing Implementations</a></h2>
 <p>TODO: write my own implementation and link it in here.</p>
-<h2><a class="header" href="#metrics" id="metrics">Metrics</a></h2>
+<h2 id="metrics"><a class="header" href="#metrics">Metrics</a></h2>
 <p>TODO: Explain which metrics are gathered and how to parse them.</p>
-<h2><a class="header" href="#output-file" id="output-file">Output File</a></h2>
+<h2 id="output-file"><a class="header" href="#output-file">Output File</a></h2>
 <p>TODO: Explain how to format the output file.</p>
-<h1><a class="header" href="#using-wobbly" id="using-wobbly">Using Wobbly</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-wobbly"><a class="header" href="#using-wobbly">Using Wobbly</a></h1>
 <p>Wobbly’s job is to act as a GUI to easily adjust fieldmatches.
 It makes use of the metrics collected by Wibbly to prepare a clip,
 and can process those to IVTC a clip.</p>
@@ -580,7 +556,7 @@ and can process those to IVTC a clip.</p>
 grab the “wob” JSON file you generated using Wibbly
 (or any other metrics gathering tool designed for wobbly)
 and drag it into the Wobbly window.</p>
-<h2><a class="header" href="#familiarizing-yourself-with-the-ui" id="familiarizing-yourself-with-the-ui">Familiarizing Yourself with the UI</a></h2>
+<h2 id="familiarizing-yourself-with-the-ui"><a class="header" href="#familiarizing-yourself-with-the-ui">Familiarizing Yourself with the UI</a></h2>
 <p>Wobbly can be a bit difficult to work around for beginners.
 This is because it’s primarily built to work with <em>keybinds</em>.
 This is a lot faster than pressing a button on-screen for every single operation,
@@ -589,7 +565,7 @@ this will save you a lot of time and effort.</p>
 <p>A list of keybinds can be found under the <em>Settings</em> tab.</p>
 <p><img src="wobbly/imgs/hotkeys.png" alt="The Keyboard Shortcuts tab" /></p>
 <p>Here is a quick table containing the relevant keybinds:</p>
-<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
 <tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
 <tr><td>Ctrl + Up Arrow</td><td>Jump to next section</td></tr>
@@ -615,6 +591,7 @@ this will save you a lot of time and effort.</p>
 <tr><td>Ctrl + Num + -</td><td>Zoom out</td></tr>
 <tr><td>(Not bound by default)</td><td>Save Project</td></tr>
 </tbody></table>
+</div>
 <p>These will be the shortcuts you’ll use most,
 so the sooner you can familiarize yourself with them,
 the better.
@@ -623,7 +600,7 @@ You can always adjust them in this menu to your liking.</p>
 This is by default bound to “Cycle through different patterns for the current section”.
 It may be worthwhile to replace this keybind
 if you’re scared you’ll accidentally cycle through sections instead of saving.</p>
-<h2><a class="header" href="#processing-the-clip" id="processing-the-clip">Processing the Clip</a></h2>
+<h2 id="processing-the-clip"><a class="header" href="#processing-the-clip">Processing the Clip</a></h2>
 <p>The first order of business is to make sure you process the project.
 Wobbly makes use of Wibbly’s metrics to make its decisions,
 but it depends on the scenechanges being correct.
@@ -631,7 +608,7 @@ Before you do anything else,
 you’ll want to jump from section to section
 and make sure every section starts and ends on an actual scenechange.</p>
 <p>The following keybinds will be your new best friends while correcting scenechanges:</p>
-<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
 <tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
 <tr><td>Ctrl + Up Arrow</td><td>Jump to next section</td></tr>
@@ -640,6 +617,7 @@ and make sure every section starts and ends on an actual scenechange.</p>
 <tr><td>Ctrl + Q</td><td>Delete current section</td></tr>
 <tr><td>Ctrl + Z</td><td>Undo</td></tr>
 </tbody></table>
+</div>
 <p>The most straight-forward way to do this
 is to simply press <code>Ctrl + Up Arrow</code>
 and jump forwards until you find the start of a new section
@@ -692,7 +670,7 @@ click “Process project”
 as this will ruin your project file).
 It will return a list of problem sections like this:</p>
 <p><img src="wobbly/imgs/ambiguous_patterns.png" alt="Ambiguous patterns" /></p>
-<h2><a class="header" href="#fixing-the-failures" id="fixing-the-failures">Fixing the Failures</a></h2>
+<h2 id="fixing-the-failures"><a class="header" href="#fixing-the-failures">Fixing the Failures</a></h2>
 <p>There are two kinds of pattern guessing failures:</p>
 <ul>
 <li>Section too short</li>
@@ -727,7 +705,7 @@ or scenes you can’t match properly
 and must be pulled down to 23.976 frame/s.
 <strong>Make sure you set it back to <em>24 fps</em>
 after you’ve dealt with every known 29.97 frame/s scene!</strong></p>
-<h2><a class="header" href="#fixing-the-framerates" id="fixing-the-framerates">Fixing the Framerates</a></h2>
+<h2 id="fixing-the-framerates"><a class="header" href="#fixing-the-framerates">Fixing the Framerates</a></h2>
 <p>Now that you’ve made most of your matches,
 navigate to the “Frame rates” window.
 It’s easiest to go one frame rate at a time.
@@ -735,12 +713,13 @@ First,
 select the “30p” checkbox.</p>
 <p><img src="wobbly/imgs/framerates.png" alt="Framerates" /></p>
 <p>A list of useful keybinds for this section:</p>
-<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
 <tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
 <tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
 </tbody></table>
-<h3><a class="header" href="#handling-30p-scenes" id="handling-30p-scenes">Handling 30p Scenes</a></h3>
+</div>
+<h3 id="handling-30p-scenes"><a class="header" href="#handling-30p-scenes">Handling 30p Scenes</a></h3>
 <p>29.97 frame/s framerates can show up for a couple reasons:</p>
 <ul>
 <li>You set a section to 29.97 frame/s yourself</li>
@@ -772,7 +751,7 @@ This is especially useful when IVTCing recurring clips,
 such as Opening or Ending themes,
 midcards,
 etc.</p>
-<h3><a class="header" href="#handling-18p-scenes" id="handling-18p-scenes">Handling 18p Scenes</a></h3>
+<h3 id="handling-18p-scenes"><a class="header" href="#handling-18p-scenes">Handling 18p Scenes</a></h3>
 <p>Once you have fixed all the wrong <em>30p</em> sections,
 we move on to <em>18p</em>.
 <em>18p</em> is basically always going to be incorrect.
@@ -798,7 +777,7 @@ If the 18p cycle occurs elsewhere,
 use your best judgment.
 Generally speaking,
 you can’t really go wrong if it’s for example in the middle of a scene.</p>
-<h3><a class="header" href="#handling-12p-and-6p-scenes" id="handling-12p-and-6p-scenes">Handling 12p and 6p Scenes</a></h3>
+<h3 id="handling-12p-and-6p-scenes"><a class="header" href="#handling-12p-and-6p-scenes">Handling 12p and 6p Scenes</a></h3>
 <p>12p and 6p,
 simply put,
 only occur when you’ve made a mistake with manual decimations.
@@ -808,9 +787,9 @@ once you restore enough frames.</p>
 you should have a list of 29.97 frame/s scenes
 you manually and knowingly set this way.</p>
 <p><img src="wobbly/imgs/framerates_fixed.png" alt="Framerates fixed" /></p>
-<h2><a class="header" href="#cleaning-up" id="cleaning-up">Cleaning Up</a></h2>
+<h2 id="cleaning-up"><a class="header" href="#cleaning-up">Cleaning Up</a></h2>
 <p>Useful keybinds for this section:</p>
-<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
 <tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
 <tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
 <tr><td>S</td><td>Cycle the current frame’s match</td></tr>
@@ -818,7 +797,8 @@ you manually and knowingly set this way.</p>
 <tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
 <tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
 </tbody></table>
-<h3><a class="header" href="#leftover-combing" id="leftover-combing">Leftover Combing</a></h3>
+</div>
+<h3 id="leftover-combing"><a class="header" href="#leftover-combing">Leftover Combing</a></h3>
 <p>Finally,
 after matching scenes and forcing framerates,
 you still want to deal with leftover combing.
@@ -829,7 +809,7 @@ click “Refresh”.
 This will perform another search through the clip
 to find any remaining combed frames.
 This may take a couple of minutes to finish.</p>
-<p><img src="wobbly/imgs/finding_combs.png" alt="Finding combed frames..." /></p>
+<p><img src="wobbly/imgs/finding_combs.png" alt="Finding combed frames…" /></p>
 <p>You can now double-click on all the found combed frames,
 or jump to the next combed frame using .
 For any combed frame,
@@ -846,7 +826,7 @@ If the caught combed frame is caused by the fade,
 ignore it
 and process it with a filter meant to deal with those
 in your filterchain later.</p>
-<h3><a class="header" href="#freezeframing" id="freezeframing">Freezeframing</a></h3>
+<h3 id="freezeframing"><a class="header" href="#freezeframing">Freezeframing</a></h3>
 <p>If you find scenes of a duplicated clip
 (that was not decimated due to being animated on twos/threes/fours)
 that has very heavy compression artifacting,
@@ -859,9 +839,9 @@ This usually won’t be applicable or worth it
 unless you’re dealing with <em>very</em> starved video
 and heavy MPEG2 blocking.</p>
 <p>Your clip should now be ready to be used in your own filterchain!</p>
-<h1><a class="header" href="#making-use-of-the-wobbly-output" id="making-use-of-the-wobbly-output">Making Use of the Wobbly Output</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="making-use-of-the-wobbly-output"><a class="header" href="#making-use-of-the-wobbly-output">Making Use of the Wobbly Output</a></h1>
 <p>There are two straightforward ways to make use of the clip you’ve just fixed up in Wobbly.</p>
-<h2><a class="header" href="#from-wobbly-itself" id="from-wobbly-itself">From Wobbly Itself</a></h2>
+<h2 id="from-wobbly-itself"><a class="header" href="#from-wobbly-itself">From Wobbly Itself</a></h2>
 <p>Within Wobbly’s “Project” dropdown menu,
 you can save a script.
 This will output a “vpy” file
@@ -869,9 +849,9 @@ next to the Wobbly JSON file.</p>
 <p><img src="wobbly/imgs/save_script.png" alt="Dropdown Options" /></p>
 <p><img src="wobbly/imgs/generated_script.png" alt="Generated Script" /></p>
 <p>You can simply stick the contents of this script into your own script and work from there.</p>
-<h2><a class="header" href="#usin-an-external-tool" id="usin-an-external-tool">Usin an External Tool</a></h2>
-<p>TODO: I would describe vswobbly here... IF I’D FINISHED WRITING IT!</p>
-<p>Want to contribute?
+<h2 id="usin-an-external-tool"><a class="header" href="#usin-an-external-tool">Usin an External Tool</a></h2>
+<p>TODO: I would describe vswobbly here… IF I’D FINISHED WRITING IT!</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Want to contribute?
 Caught a topic we should’ve <em>reaaaalllyyyy</em> caught ourselves but didn’t?
 Leave an Issue (or heck, even a PR!)
 on the GitHub repo and we’ll check it out!</p>
@@ -881,7 +861,7 @@ I will rid you of your spine.<br>
 The only currently accepted English dialect is <em>American English</em>.<br></p>
 <p>We currently do not accept PRs for very minute changes.
 Please write an Issue instead.</p>
-<h2><a class="header" href="#notable-contributors" id="notable-contributors">Notable Contributors</a></h2>
+<h2 id="notable-contributors"><a class="header" href="#notable-contributors">Notable Contributors</a></h2>
 <p>Guide:</p>
 <ul>
 <li>LightArrowsEXE (Primary author)</li>
@@ -893,8 +873,8 @@ Please write an Issue instead.</p>
 <li>Setsugennoao (Current Wobbly maintainer)</li>
 <li>arch1t3cht (Added the undo keybind, the best update Wobbly has ever received (<em>real and factual</em>))</li>
 </ul>
-<h2><a class="header" href="#disclaimer" id="disclaimer">Disclaimer</a></h2>
-<h3><a class="header" href="#accountability-for-content" id="accountability-for-content">Accountability for content</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="disclaimer"><a class="header" href="#disclaimer">Disclaimer</a></h2>
+<h3 id="accountability-for-content"><a class="header" href="#accountability-for-content">Accountability for content</a></h3>
 <p>The contents of our pages have been created with the utmost care.
 However, we cannot guarantee the contents’ accuracy, completeness or
 topicality.
@@ -906,13 +886,13 @@ illegal activity.
 Our obligations to remove or block the use of information under generally
 applicable laws remain unaffected by this as per
 §§ 8 to 10 of the Telemedia Act (TMG).</p>
-<h3><a class="header" href="#accountability-for-links" id="accountability-for-links">Accountability for links</a></h3>
+<h3 id="accountability-for-links"><a class="header" href="#accountability-for-links">Accountability for links</a></h3>
 <p>Responsibility for the content of external links (to web pages of third parties)
 lies solely with the operators of the linked pages.
 No violations were evident to us at the time of linking.
 Should any legal infringement become known to us,
 we will remove the respective link immediately.</p>
-<h1><a class="header" href="#privacy-policy" id="privacy-policy">Privacy Policy</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="privacy-policy"><a class="header" href="#privacy-policy">Privacy Policy</a></h1>
 <ol>
 <li>
 <p>This page does not store any of your data by itself.</p>
@@ -929,9 +909,7 @@ Read the privacy policy of GitHub for further information.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -939,51 +917,37 @@ Read the privacy policy of GitHub for further information.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
-        
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             MathJax.Hub.Register.StartupHook('End', function() {
                 window.setTimeout(window.print, 100);
             });
         });
         </script>
-        
-        
 
+    </div>
     </body>
 </html>
