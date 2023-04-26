@@ -19,7 +19,7 @@ The project is [hosted on Github][github].
 ## Getting started
 
 New to Wobbly or IVTC/Deinterlacing in general?
-Check out our [quick primer][primer] to get a basic understanding
+Check out our [quick primer][overview] to get a basic understanding
 of the relevant topic and theories.
 
 
@@ -34,7 +34,7 @@ Check the [contribute] section!
 
 This guide may not always be entirely up-to-date with what newer commits offer.
 Programs may be in constant development,
-so if something is outdated or there are any errors in this book,
+so if something is outdated or you find any errors in this book,
 please [contact us][contact]!
 
 This is neither a Vapoursynth nor a filtering guide.
