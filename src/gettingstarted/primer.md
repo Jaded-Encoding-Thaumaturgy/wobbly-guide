@@ -10,7 +10,7 @@ Virtually every DVD has these,
 and in some cases  you may even find them on Blu-rays!
 
 What you're seeing here is called *telecining*.
-It's very common for digital anime to be produced at a constant 23.976 frame/s
+It's very common for digital anime to be animated at a constant 23.976 frame/s
 However, old analog TVs would always broadcast video at 29.97 frame/s.
 This became a problem for anything that wasn't that exact framerate,
 such as a lot of movies and TV series,
@@ -57,8 +57,7 @@ and is the most common form of telecining there is for anime.
 ![A classic example of 3:2 pulldown](imgs/3_2_pulldown.png)
 
 Other forms of pulldown exist,
-but those are rarely used in any kind of video source
-you'll end up using when encoding anime.
+but 3:2 pulldown is the most well-known pattern.
 The only exception may be PAL DVDs,
 but due to the nature of trying to fit 23.976 → 25 being so difficult,
 these will often be a lot harder to undo
@@ -119,7 +118,8 @@ and will result in *orphan fields* being created.
 *Orphan fields* are fields with no pairing field available to reconstruct the original frame with.
 They're an artifact leftover from improper splicing and trimming,
 and can by nature no longer be losslessly restored.
-The most common method to handle those is to duplicate the previous frame.
+The most common method to handle those is to drop the next or previous field
+depending on the type of orphan.
 This, however, has the drawback of creating a small "hiccup" during playback
 if the scene has a lot of motion prior to the scenechange.
 
@@ -134,7 +134,7 @@ as well as mixing different framerates together.
 A common example of editing done on 60i video is *interlaced credits*.
 When checking each individual field,
 sometimes you may notice that certain elements are unique in each field.
-These are *hard-interlaced*,
+These are *interlaced*,
 and must be deinterlaced.
 This may not always be straight-forward however,
 as with for example interlaced credits, the underlying video is still 23.976 frame/s content,
@@ -157,8 +157,11 @@ or store frame time information in an external file
 and mux those into the video container after encoding.
 This means the scenes that are telecined must be marked as 23.976 frame/s post-IVTC,
 and the scenes that are animated at 29.97 frame/s must be marked as 29.97 frame/s.
-Any deinterlaced scenes where the temporal resolution has been increased
+Most deinterlaced scenes where the temporal resolution has been increased
 must be marked as 59.94 frame/s.
+Exceptions may include cross fades
+or 59.94 frame/s credits on top of 23.976 or 29.97 frame/s animation,
+which you still want to pull down to your target framerate.
 
 ## Additional Learning Resources:
 

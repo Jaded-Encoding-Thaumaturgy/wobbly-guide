@@ -15,11 +15,11 @@ The easiest place to put it is in your Documents directory.
 
 Wobbly has the following dependencies:
 
-* [d2vsource](https://github.com/dwbuiten/d2vsource)
-* [DGDecNV](https://www.rationalqm.us/dgdecnv/dgdecnv.html)
+* [d2vsource](https://github.com/dwbuiten/d2vsource) (optional, input dependent)
+* [DGDecNV](https://www.rationalqm.us/dgdecnv/dgdecnv.html) (optional, input dependent)
 * [DMetrics](https://github.com/vapoursynth/dmetrics)
 * [FieldHint](https://github.com/dubhater/vapoursynth-fieldhint)
-* [L-SMASH-Works](https://github.com/AkarinVS/vapoursynth-plugin) (through Akarin)
+* [L-SMASH-Works](https://github.com/AkarinVS/vapoursynth-plugin) (optional, input dependent, through Akarin)
 * [SCXVID](https://github.com/dubhater/vapoursynth-scxvid)
 * [TDeintMod](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod)
 * [vivtc](https://github.com/vapoursynth/vivtc)
