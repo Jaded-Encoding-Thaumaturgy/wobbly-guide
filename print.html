@@ -188,7 +188,7 @@ combing.</p>
 <p>Virtually every DVD has these,
 and in some cases  you may even find them on Blu-rays!</p>
 <p>What you’re seeing here is called <em>telecining</em>.
-It’s very common for digital anime to be produced at a constant 23.976 frame/s
+It’s very common for digital anime to be animated at a constant 23.976 frame/s
 However, old analog TVs would always broadcast video at 29.97 frame/s.
 This became a problem for anything that wasn’t that exact framerate,
 such as a lot of movies and TV series,
@@ -226,8 +226,7 @@ $$</p>
 and is the most common form of telecining there is for anime.</p>
 <p><img src="gettingstarted/imgs/3_2_pulldown.png" alt="A classic example of 3:2 pulldown" /></p>
 <p>Other forms of pulldown exist,
-but those are rarely used in any kind of video source
-you’ll end up using when encoding anime.
+but 3:2 pulldown is the most well-known pattern.
 The only exception may be PAL DVDs,
 but due to the nature of trying to fit 23.976 → 25 being so difficult,
 these will often be a lot harder to undo
@@ -277,7 +276,8 @@ and will result in <em>orphan fields</em> being created.</p>
 <p><em>Orphan fields</em> are fields with no pairing field available to reconstruct the original frame with.
 They’re an artifact leftover from improper splicing and trimming,
 and can by nature no longer be losslessly restored.
-The most common method to handle those is to duplicate the previous frame.
+The most common method to handle those is to drop the next or previous field
+depending on the type of orphan.
 This, however, has the drawback of creating a small “hiccup” during playback
 if the scene has a lot of motion prior to the scenechange.</p>
 <h2 id="60i-and-variable-framerate-footage"><a class="header" href="#60i-and-variable-framerate-footage">60i and Variable Framerate Footage</a></h2>
@@ -288,7 +288,7 @@ as well as mixing different framerates together.</p>
 <p>A common example of editing done on 60i video is <em>interlaced credits</em>.
 When checking each individual field,
 sometimes you may notice that certain elements are unique in each field.
-These are <em>hard-interlaced</em>,
+These are <em>interlaced</em>,
 and must be deinterlaced.
 This may not always be straight-forward however,
 as with for example interlaced credits, the underlying video is still 23.976 frame/s content,
@@ -309,8 +309,11 @@ or store frame time information in an external file
 and mux those into the video container after encoding.
 This means the scenes that are telecined must be marked as 23.976 frame/s post-IVTC,
 and the scenes that are animated at 29.97 frame/s must be marked as 29.97 frame/s.
-Any deinterlaced scenes where the temporal resolution has been increased
-must be marked as 59.94 frame/s.</p>
+Most deinterlaced scenes where the temporal resolution has been increased
+must be marked as 59.94 frame/s.
+Exceptions may include cross fades
+or 59.94 frame/s credits on top of 23.976 or 29.97 frame/s animation,
+which you still want to pull down to your target framerate.</p>
 <h2 id="additional-learning-resources"><a class="header" href="#additional-learning-resources">Additional Learning Resources:</a></h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Telecine">Telecine - Wikipedia</a></li>
@@ -385,11 +388,11 @@ The easiest place to put it is in your Documents directory.</p>
 <h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
 <p>Wobbly has the following dependencies:</p>
 <ul>
-<li><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a></li>
-<li><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a></li>
+<li><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a> (optional, input dependent)</li>
+<li><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a> (optional, input dependent)</li>
 <li><a href="https://github.com/vapoursynth/dmetrics">DMetrics</a></li>
 <li><a href="https://github.com/dubhater/vapoursynth-fieldhint">FieldHint</a></li>
-<li><a href="https://github.com/AkarinVS/vapoursynth-plugin">L-SMASH-Works</a> (through Akarin)</li>
+<li><a href="https://github.com/AkarinVS/vapoursynth-plugin">L-SMASH-Works</a> (optional, input dependent, through Akarin)</li>
 <li><a href="https://github.com/dubhater/vapoursynth-scxvid">SCXVID</a></li>
 <li><a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">TDeintMod</a></li>
 <li><a href="https://github.com/vapoursynth/vivtc">vivtc</a></li>
@@ -451,9 +454,19 @@ you can use D2vWitch.
 How to use either program is outside of the scope of this guide.</p>
 <p>For Blu-ray files,
 DGIndexNV will still give you the most accurate results.
-However, you can also opt to use L-SMASH-Works instead.
+However, you can also opt to use L-SMASH-Works instead,
+though this is not recommended as L-SMASH-Works returns inaccurate results on interlaced content.
 It will use L-SMASH-Works by default if you drag an m2ts or mkv file
 into the jobs window.</p>
+<p>Take note!
+If DGIndexNV reports that your source is (almost) 100% FILM,
+you do not want to use Wobbly on it!
+<em>FILM</em> denotes how much of the indexed clip is <em>soft-telecined</em>.
+If the entire clip is FILM,
+there is no reason to perform any IVTC on it
+and instead you should simply ignore the flag.
+You can do this by loading the index file in your script using <code>dgdecodenv.DGSource</code>
+and passing the following argument: <code>fieldop=1</code>.</p>
 <h2 id="gathering-metrics"><a class="header" href="#gathering-metrics">Gathering Metrics</a></h2>
 <p>Once you’ve indexed a video file,
 the video will show in the Video Output window.</p>
@@ -470,27 +483,27 @@ frame 100 will be included in the trimmed clip.
 If you’re working with TV caps,
 you’ll want to make sure you trim out only the actual episode
 and ignore all the sponsorcards and advertisements.
-With DVDs, you may have indexed multiple episodes at once.
+With DVDs,
+you may have indexed multiple episodes at once.
 Trim out only the episode you want to work on,
 and ignore the others.
 If you want to work on the other episodes,
 make sure you give each output file a unique name
 so you don’t accidentally overwrite them with the next metrics gathering!</p>
-<p>[//] &lt;&gt; (TODO: fact check what the proper mod is for the cropping section.)</p>
 <p>Cropping is done to get rid of the black bars on the sides of the video.
 Keeping those may mess with the metric gathering,
 so it’s safer to remove them.
 With YUV420/YV12 video,
-the final output image must be mod4,
+the final output image must be mod4 vertically and mod2 horizontally,
 so you may need to crop slightly more
 to get rid of all the black bars.
 The Video Output window will update as you select crops,
 so you can see whether a crop is being applied properly immediately.</p>
-<p>[//] &lt;&gt; (TODO: More testing with the interlaced fades setting)</p>
-<p>Next, you select the threshold for interlaced fades detection.
+<p>Next,
+you select the threshold for interlaced fades detection.
 Interlaced fades are fading effects applied to a video
 that was telecined to 29.97 frame/s.
-These fades will be 29.97 frame/s as well,
+These fades will be 29.97 or 59.94 frame/s,
 but the underlying animation will often be 23.976 frame/s,
 so we must pull them down.
 To determine a healthy threshold,
@@ -506,7 +519,10 @@ but make sure you <em>always</em> tick “Enable DMetrics”.
 If your video is Bottom-Field-First,
 set “order” to “0”.
 Furthermore,
-if your source has a different telecining pattern for the chroma,
+if your source has chroma with a different telecining pattern,
+ghosting,
+blending,
+etc.,
 untick “Chroma” in this menu as well.</p>
 <h2 id="running-your-jobs"><a class="header" href="#running-your-jobs">Running Your Jobs</a></h2>
 <p>Once you’ve set all the settings
@@ -518,8 +534,13 @@ To switch jobs,
 simply click on the job you want to change settings for
 inside the Jobs window.</p>
 <p>It’s recommended you gather metrics for every single option available.
-The only exceptions may be trimming or cropping if they’re not performed,
+Exceptions may be trimming or cropping if they’re not performed,
 or interlaced fades if you are absolutely certain there are none.
+If you have a source that is almost certainly a constant pattern as well
+(such as TV caps for example),
+you may also skip metrics such as scene detection,
+decimation,
+and interlaced fades.
 This may speed up the metric gathering a bit,
 but it’s still safer to check for everything.</p>
 <p>Once you’ve made your choices
