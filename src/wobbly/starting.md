@@ -202,9 +202,7 @@ it will always drop the second.
 ### Process project
 
 Once you have finished setting the aforementioned settings,
-click "Process project"
-(and make absolutely sure to NOT press that button again,
-as this will ruin your project file).
+click "Process project".
 It will return a list of problem sections like this:
 
 ![Ambiguous patterns](imgs/ambiguous_patterns.png)
