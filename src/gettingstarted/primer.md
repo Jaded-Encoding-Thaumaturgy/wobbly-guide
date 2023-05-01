@@ -56,13 +56,12 @@ and is the most common form of telecining there is for anime.
 
 ![A classic example of 3:2 pulldown](imgs/3_2_pulldown.png)
 
-Other forms of pulldown exist,
-but 3:2 pulldown is the most well-known pattern.
-The only exception may be PAL DVDs,
-but due to the nature of trying to fit 23.976 → 25 being so difficult,
-these will often be a lot harder to undo
-(and more crucially,
-Wobbly does not currently offer support for these kinds of patterns).
+Other forms of pulldown exist as well,
+but 3:2 pulldown is the most well-known pattern for NTSC sources.
+For PAL video,
+different patterns will be required to fit 23.976 → 25 framerates
+(and crucially,
+Wobbly does not currently offer support for the kinds of patterns used for PAL video).
 
 
 ## Telecining vs. Interlacing
