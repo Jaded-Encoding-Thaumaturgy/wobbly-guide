@@ -108,7 +108,7 @@ so you don't accidentally overwrite them with the next metrics gathering!
 Cropping is done to get rid of the black bars on the sides of the video.
 Keeping those may mess with the metric gathering,
 so it's safer to remove them.
-With YUV420/YV12 video,
+With YUV420 video,
 the final output image must be mod4 vertically and mod2 horizontally,
 so you may need to crop slightly more
 to get rid of all the black bars.

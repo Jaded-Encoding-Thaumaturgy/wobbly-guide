@@ -19,6 +19,7 @@ Wobbly always assumes a clean 3:2 Pulldown algorithm
 was applied to the input clip,
 and no support is currently given for other patterns.
 
+
 ## Deinterlaced Footage
 
 Wobbly has no support for footage that was deinterlaced
@@ -41,6 +42,7 @@ and only requires decimation are not currently supported in Wobbly.
 It relies on knowing the fieldmatches
 to determine how a clip should be decimated.
 It simply does not know what to do with progressive content.
+
 
 ## "True" VFR
 
@@ -70,6 +72,18 @@ whereas YATTA would automatically determine this was the case
 and add a decimation by itself.
 We cover how to do this manually in the *[Fixing the Framerate][framerates_guide]* section,
 but it's something that should honestly be done automatically.
+
+
+## Outputting 60p
+
+Wobbly does not currently support 60p output.
+This means that if you have any scenes that feature 60p footage
+(commonly pans,
+text added in post,
+or other effects),
+you must handle that yourself in your Vapoursynth script.
+This also means you must generate your own timecodes file
+and can't rely on the one Wobbly outputs.
 
 
 [//]: <> (urls)
