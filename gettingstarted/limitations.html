@@ -207,6 +207,15 @@ whereas YATTA would automatically determine this was the case
 and add a decimation by itself.
 We cover how to do this manually in the <em><a href="//">Fixing the Framerate</a></em> section,
 but it’s something that should honestly be done automatically.</p>
+<h2 id="outputting-60p"><a class="header" href="#outputting-60p">Outputting 60p</a></h2>
+<p>Wobbly does not currently support 60p output.
+This means that if you have any scenes that feature 60p footage
+(commonly pans,
+text added in post,
+or other effects),
+you must handle that yourself in your Vapoursynth script.
+This also means you must generate your own timecodes file
+and can’t rely on the one Wobbly outputs.</p>
 
                     </main>
 

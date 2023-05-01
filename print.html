@@ -375,6 +375,15 @@ whereas YATTA would automatically determine this was the case
 and add a decimation by itself.
 We cover how to do this manually in the <em><a href="gettingstarted///">Fixing the Framerate</a></em> section,
 but it’s something that should honestly be done automatically.</p>
+<h2 id="outputting-60p"><a class="header" href="#outputting-60p">Outputting 60p</a></h2>
+<p>Wobbly does not currently support 60p output.
+This means that if you have any scenes that feature 60p footage
+(commonly pans,
+text added in post,
+or other effects),
+you must handle that yourself in your Vapoursynth script.
+This also means you must generate your own timecodes file
+and can’t rely on the one Wobbly outputs.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <p>To install Wobbly, you must first navigate to its <a href="https://github.com/Setsugennoao/Wobbly/releases">download page</a>.
 The recommended version as of writing this guide is the <a href="https://github.com/Setsugennoao/Wobbly/actions">Setsugennoao fork, release v6-R2</a>.</p>
@@ -494,7 +503,7 @@ so you don’t accidentally overwrite them with the next metrics gathering!</p>
 <p>Cropping is done to get rid of the black bars on the sides of the video.
 Keeping those may mess with the metric gathering,
 so it’s safer to remove them.
-With YUV420/YV12 video,
+With YUV420 video,
 the final output image must be mod4 vertically and mod2 horizontally,
 so you may need to crop slightly more
 to get rid of all the black bars.
@@ -693,7 +702,7 @@ but the scenes it guessed may not be as accurate as mics.</p>
 <li>From mics+dmetrics</li>
 </ul>
 <p>Try to guess the pattern using mics wherever possible
-using mics to have the highest likelihood of the guessed scenes being correct.
+to have the highest likelihood of the guessed scenes being correct.
 If dmetrics matches a scene mics didn’t,
 it will fall back on dmetrics.
 This is the most reliable option,
@@ -748,7 +757,7 @@ click “Process project”.
 It will return a list of problem sections like this:</p>
 <p><img src="wobbly/imgs/ambiguous_patterns.png" alt="Ambiguous patterns" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="handling-pattern-guessing-failures"><a class="header" href="#handling-pattern-guessing-failures">Handling Pattern Guessing Failures</a></h1>
-<p>After pattern guessing and fixing framerates,
+<p>After pattern guessing,
 there may still be pattern guessing failures.</p>
 <p>Useful keybinds for this section:</p>
 <div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
@@ -940,7 +949,12 @@ next to the Wobbly JSON file.</p>
 <p><img src="wobbly/imgs/save_script.png" alt="Dropdown Options" /></p>
 <p><img src="wobbly/imgs/generated_script.png" alt="Generated Script" /></p>
 <p>You can simply stick the contents of this script into your own script and work from there.</p>
-<h2 id="usin-an-external-tool"><a class="header" href="#usin-an-external-tool">Usin an External Tool</a></h2>
+<p>Wobbly can also output a timecode file.
+This should be muxed into the final container alongside your video
+to make sure it properly displays VFR content.
+If the end result is a <em>Constant Framerate</em>,
+you can skip that so long as you mark the framerate correctly during encoding.</p>
+<h2 id="using-an-external-tool"><a class="header" href="#using-an-external-tool">Using an External Tool</a></h2>
 <p>TODO: I would describe vswobbly here… IF I’D FINISHED WRITING IT!</p>
 <div style="break-before: page; page-break-before: always;"></div><p>Want to contribute?
 Caught a topic we should’ve <em>reaaaalllyyyy</em> caught ourselves but didn’t?
