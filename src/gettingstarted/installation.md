@@ -22,7 +22,7 @@ Wobbly has the following dependencies:
 * [DGDecNV](https://www.rationalqm.us/dgdecnv/dgdecnv.html) (optional, input dependent)
 * [DMetrics](https://github.com/vapoursynth/dmetrics)
 * [FieldHint](https://github.com/dubhater/vapoursynth-fieldhint)
-* [L-SMASH-Works](https://github.com/AkarinVS/vapoursynth-plugin) (optional, input dependent, through Akarin)
+* [L-SMASH-Works](https://github.com/AkarinVS/L-SMASH-Works) (optional, input dependent, through Akarin)
 * [SCXVID](https://github.com/dubhater/vapoursynth-scxvid)
 * [TDeintMod](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod)
 * [vivtc](https://github.com/vapoursynth/vivtc)
