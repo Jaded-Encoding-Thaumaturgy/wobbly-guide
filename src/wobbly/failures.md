@@ -1,6 +1,6 @@
 # Handling Pattern Guessing Failures
 
-After pattern guessing and fixing framerates,
+After pattern guessing,
 there may still be pattern guessing failures.
 
 Useful keybinds for this section:
