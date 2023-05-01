@@ -20,7 +20,3 @@ This should be muxed into the final container alongside your video
 to make sure it properly displays VFR content.
 If the end result is a *Constant Framerate*,
 you can skip that so long as you mark the framerate correctly during encoding.
-
-## Using an External Tool
-
-TODO: I would describe vswobbly here... IF I'D FINISHED WRITING IT!
