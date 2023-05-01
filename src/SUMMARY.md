@@ -13,7 +13,6 @@
 # Wibbly
 
 - [First steps](./wibbly/jobs.md)
-- [Different Implementations](./wibbly/implementation.md)
 
 --------
 [//]: <> (Pages about Wobbly usage)
