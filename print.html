@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded "><a href="wibbly/implementation.html">Different Implementations</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="wobbly/starting.html">Starting Your Project</a></li><li class="chapter-item expanded "><a href="wobbly/framerates.html">Fixing Framerates</a></li><li class="chapter-item expanded "><a href="wobbly/failures.html">Fixing Failures</a></li><li class="chapter-item expanded "><a href="wobbly/output.html">Using the Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="privacy-policy.html">Privacy Policy</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded "><a href="wibbly/implementation.html">Different Implementations</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="wobbly/starting.html">Starting Your Project</a></li><li class="chapter-item expanded "><a href="wobbly/failures.html">Fixing Failures</a></li><li class="chapter-item expanded "><a href="wobbly/framerates.html">Fixing Framerates</a></li><li class="chapter-item expanded "><a href="wobbly/output.html">Using the Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="privacy-policy.html">Privacy Policy</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -784,6 +784,72 @@ or scenes you can’t match properly
 and must be pulled down to 23.976 frame/s.
 <strong>Make sure you set it back to <em>24 fps</em>
 after you’ve dealt with every known 29.97 frame/s scene!</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="handling-pattern-guessing-failures"><a class="header" href="#handling-pattern-guessing-failures">Handling Pattern Guessing Failures</a></h1>
+<p>After pattern guessing and fixing framerates,
+there may still be pattern guessing failures.</p>
+<p>Useful keybinds for this section:</p>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>S</td><td>Cycle the current frame’s match</td></tr>
+<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
+<tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
+<tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
+</tbody></table>
+</div>
+<h2 id="leftover-combing"><a class="header" href="#leftover-combing">Leftover Combing</a></h2>
+<p>Pattern guessing may sometimes leave you with random combed frames
+that could not be matched automatically.
+Open the “Combed frames” menu.</p>
+<p><img src="wobbly/imgs/combed_frames.png" alt="A list of all the combed frames found" /></p>
+<p>Before you do anything,
+click “Refresh”.
+This will perform another search through the clip
+to find any remaining combed frames.
+This may take a couple of minutes to finish.</p>
+<p><img src="wobbly/imgs/finding_combs.png" alt="Finding combed frames…" /></p>
+<p>You can now double-click on all the found combed frames,
+or jump to the next combed frame using .
+For any combed frame,
+you can press <code>S</code> to cycle through fieldhints.
+If every cycle returns a combed frames,
+consider adjusting the decimated frame
+(using <code>D</code> to swap between decimated and not,
+making sure you don’t ruin the framerates you just fixed),
+or pulling it down in your filterchain later.</p>
+<p>Another thing to take into account is that this will also find telecined fades.
+You typically do not want to perform fieldmatching on the fade itself,
+but just the underlying animation.
+If the caught combed frame is caused by the fade,
+ignore it
+and process it with a filter meant to deal with those
+in your filterchain later.</p>
+<h2 id="freezeframing"><a class="header" href="#freezeframing">Freezeframing</a></h2>
+<p>If you find scenes of a duplicated clip
+(that was not decimated due to being animated on twos/threes/fours)
+that has very heavy compression artifacting,
+it might be worth it to freezeframe it with either the next frame
+(<code>Shift + F</code>)
+or the previous frame
+(<code>Ctrl + F</code>).
+You can adjust these later in the “Frozen frames” window.
+This usually won’t be applicable or worth it
+unless you’re dealing with <em>very</em> starved video
+and heavy MPEG2 blocking.</p>
+<h2 id="crossfades"><a class="header" href="#crossfades">Crossfades</a></h2>
+<p>When dealing with fades to and from scenes,
+you’ll want to put the scene change somewhere in the middle.
+The first frame before a fade in is usually the best,
+unless it fades in from a solid colour with a clear scenechange.
+To deal with crossfades
+(that is, two scenes that fade into each other
+without a solid color inbetween)
+where the pattern differs between scenes,
+you can try creating a new section
+that captures just the fade.
+Wobbly may be able to accurately decimate that for you.
+If the pattern remains the same,
+there is no reason to do this.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fixing-framerate-failures"><a class="header" href="#fixing-framerate-failures">Fixing Framerate Failures</a></h1>
 <p>A list of useful keybinds for this section:</p>
 <div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
@@ -866,72 +932,6 @@ once you restore enough frames.</p>
 you should have a list of 29.97 frame/s scenes
 you manually and knowingly set this way.</p>
 <p><img src="wobbly/imgs/framerates_fixed.png" alt="Framerates fixed" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="handling-pattern-guessing-failures"><a class="header" href="#handling-pattern-guessing-failures">Handling Pattern Guessing Failures</a></h1>
-<p>After pattern guessing and fixing framerates,
-there may still be pattern guessing failures.</p>
-<p>Useful keybinds for this section:</p>
-<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
-<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
-<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
-<tr><td>S</td><td>Cycle the current frame’s match</td></tr>
-<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
-<tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
-<tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
-</tbody></table>
-</div>
-<h2 id="leftover-combing"><a class="header" href="#leftover-combing">Leftover Combing</a></h2>
-<p>Pattern guessing may sometimes leave you with random combed frames
-that could not be matched automatically.
-Open the “Combed frames” menu.</p>
-<p><img src="wobbly/imgs/combed_frames.png" alt="A list of all the combed frames found" /></p>
-<p>Before you do anything,
-click “Refresh”.
-This will perform another search through the clip
-to find any remaining combed frames.
-This may take a couple of minutes to finish.</p>
-<p><img src="wobbly/imgs/finding_combs.png" alt="Finding combed frames…" /></p>
-<p>You can now double-click on all the found combed frames,
-or jump to the next combed frame using .
-For any combed frame,
-you can press <code>S</code> to cycle through fieldhints.
-If every cycle returns a combed frames,
-consider adjusting the decimated frame
-(using <code>D</code> to swap between decimated and not,
-making sure you don’t ruin the framerates you just fixed),
-or pulling it down in your filterchain later.</p>
-<p>Another thing to take into account is that this will also find telecined fades.
-You typically do not want to perform fieldmatching on the fade itself,
-but just the underlying animation.
-If the caught combed frame is caused by the fade,
-ignore it
-and process it with a filter meant to deal with those
-in your filterchain later.</p>
-<h2 id="freezeframing"><a class="header" href="#freezeframing">Freezeframing</a></h2>
-<p>If you find scenes of a duplicated clip
-(that was not decimated due to being animated on twos/threes/fours)
-that has very heavy compression artifacting,
-it might be worth it to freezeframe it with either the next frame
-(<code>Shift + F</code>)
-or the previous frame
-(<code>Ctrl + F</code>).
-You can adjust these later in the “Frozen frames” window.
-This usually won’t be applicable or worth it
-unless you’re dealing with <em>very</em> starved video
-and heavy MPEG2 blocking.</p>
-<h2 id="crossfades"><a class="header" href="#crossfades">Crossfades</a></h2>
-<p>When dealing with fades to and from scenes,
-you’ll want to put the scene change somewhere in the middle.
-The first frame before a fade in is usually the best,
-unless it fades in from a solid colour with a clear scenechange.
-To deal with crossfades
-(that is, two scenes that fade into each other
-without a solid color inbetween)
-where the pattern differs between scenes,
-you can try creating a new section
-that captures just the fade.
-Wobbly may be able to accurately decimate that for you.
-If the pattern remains the same,
-there is no reason to do this.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="making-use-of-the-wobbly-output"><a class="header" href="#making-use-of-the-wobbly-output">Making Use of the Wobbly Output</a></h1>
 <p>There are two straightforward ways to make use of the clip you’ve just fixed up in Wobbly.</p>
 <h2 id="from-wobbly-itself"><a class="header" href="#from-wobbly-itself">From Wobbly Itself</a></h2>
