@@ -22,9 +22,10 @@ Guide:
 
 Development:
 
-- Myrsloik (YATTA and Wobbly developer and creator)
+- Myrsloik (YATTA and Vapoursynth developer and creator)
+- dubhater (Wobbly developer and creator)
 - Setsugennoao (Current Wobbly maintainer)
-- arch1t3cht (Added the undo keybind, the best update Wobbly has ever received (*real and factual*))
+- arch1t3cht (Added the undo keybind, the best update Wobbly has ever received (real *and* factual))
 
 
 [//]: <> (urls)
