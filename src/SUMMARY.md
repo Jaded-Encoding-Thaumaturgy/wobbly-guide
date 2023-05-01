@@ -20,8 +20,10 @@
 
 # Wobbly
 
-- [Standard Workflow](./wobbly/workflow.md)
-- [Using Wobbly's Output](./wobbly/output.md)
+- [Starting Your Project](./wobbly/starting.md)
+- [Fixing Framerates](./wobbly/framerates.md)
+- [Fixing Failures](./wobbly/failures.md)
+- [Using the Output](./wobbly/output.md)
 
 --------
 

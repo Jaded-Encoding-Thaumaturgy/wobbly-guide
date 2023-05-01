@@ -106,20 +106,6 @@ as that may introduce issues during the processing.
 A simple way to look at it is that every section equates a scene,
 with a cut made on the start and end of it.
 
-When dealing with fades to and from scenes,
-you'll want to put the scene change somewhere in the middle.
-The first frame before a fade in is usually the best,
-unless it fades in from a solid colour with a clear scenechange.
-To deal with crossfades
-(that is, two scenes that fade into each other
-without a solid color inbetween)
-where the pattern differs between scenes,
-you can try creating a new section
-that captures just the fade.
-Wobbly may be able to accurately decimate that for you.
-If the pattern remains the same,
-there is no reason to do this.
-
 You follow these procedures throughout the entire clip,
 creating and deleting sections as necessary.
 Once you're done,
@@ -128,14 +114,94 @@ Navigate to the Pattern Guessing window.
 
 ![The Pattern Guessing window](imgs/pattern_guessing.png)
 
-You'll want to make sure you are using "From mics+dmetrics"
-with an *Edge Cutoff* of 1 frame.
-It's not recommended you adjust the *Minimum Length*.
-For patterns,
-you'll only want to select "CCCNN".
-For decimation,
-pick "First duplicate".
-Then finally,
+There are a lot of options here,
+so we will go over each of them separately.
+
+### Guessing method
+
+- From matches
+
+Try to guess the patterns using matches.
+This is unreliable
+and it will often result in a lot of errors
+where other guessing methods guess correctly.
+This is never recommended.
+
+- From mics
+
+Try to guess the patterns using mics.
+This option is generally reliable,
+but on its own it may still return a lot of errors.
+
+- From dmetrics
+
+Try to guess the pattern using dmetrics.
+This errors less than guessing from mics does,
+but the scenes it guessed may not be as accurate as mics.
+
+- From mics+dmetrics
+
+Try to guess the pattern using mics wherever possible
+using mics to have the highest likelihood of the guessed scenes being correct.
+If dmetrics matches a scene mics didn't,
+it will fall back on dmetrics.
+This is the most reliable option,
+and it's quite accurate and returns the least amount of errors.
+
+### Edge cutoff
+
+*Edge cutoff* determines how many frames from the start and end of the scene get ignored.
+This is useful for video where the pattern changes constantly
+due to editing being done on 60i footage
+(and if you're using Wobbly,
+chances are that's exactly what you're dealing with here).
+This will prevent pattern guessing from failing on scenes with an otherwise clear pattern
+because of orphan fields at the start or end of the section messing up pattern guessing.
+
+There's never really a reason to change this from "1 frame".
+
+### Use patterns
+
+These are preset patterns the pattern guessing tries to look for.
+This should always be set to *CCCNN*,
+as wobbly is built around automatically dealing with 3:2 pulldown.
+If you have a video with different patterns,
+you should instead be handling those manually in the *Pattern editor* tab.
+
+### Decimate
+
+- First Duplicate
+
+Drop the first N in a *CCCNN* pattern.
+This is usually the best option.
+
+- Second Duplicate
+
+Drop the second N in a *CCCNN* pattern.
+This may be more useful than *First Duplicate*
+if every second duplicate is consistently of lower quality
+due to compression.
+
+- Duplicate with higher mic per cycle
+
+Drop the duplicate that has the highest mic within the current cycle.
+This option is useful if you have a very starved source
+where the lower-quality duplicate isn't very consistent,
+as those usually have higher mics.
+Note that this will likely return more framerate errors!
+
+- Duplicate with higher mic per section
+
+Drop the duplicate that has the highest mic within the current section.
+This means that if the first duplicate in every cycle within the current section
+has a higher mic on average, it will always drop the first duplicate.
+Else,
+it will always drop the second.
+
+
+### Process project
+
+Once you have finished setting the aforementioned settings,
 click "Process project"
 (and make absolutely sure to NOT press that button again,
 as this will ruin your project file).
@@ -181,164 +247,3 @@ or scenes you can't match properly
 and must be pulled down to 23.976 frame/s.
 **Make sure you set it back to *24 fps*
 after you've dealt with every known 29.97 frame/s scene!**
-
-## Fixing the Framerates
-
-Now that you've made most of your matches,
-navigate to the "Frame rates" window.
-It's easiest to go one frame rate at a time.
-First,
-select the "30p" checkbox.
-
-![Framerates](imgs/framerates.png)
-
-A list of useful keybinds for this section:
-
-| Key                       | Action                                   |
-| ------------------------- | ---------------------------------------- |
-| Left Arrow                | Jump 1 frame back |
-| Right Arrow               | Jump 1 frame forward |
-| D                         | Toggle decimation for the current frame |
-
-### Handling 30p Scenes
-
-29.97 frame/s framerates can show up for a couple reasons:
-
-- You set a section to 29.97 frame/s yourself
-
-This should be done on any scenes that are native 29.97 frame/s or 59.94 frame/s,
-or requires pulldown of some kind
-(overlaid 29.97 frame/s credits on 23.976 frame/s content, for example).
-
-- Pattern changes on scenechanges leave you with an extra frame
-
-![An extra frame is left](imgs/extra_frame.png)
-
-This is not an uncommon occurrence,
-as with anime the editing is often done on the telecined video.
-The easiest fix for this is to simply decimate one of the extra frames.
-This ensures you keep a constant frame rate.
-This option is especially easy to take if the final frame in a section has an orphan field,
-as the easiest way to fix those is to drop it anyway.
-Another option is to keep that section 29.97 frame/s,
-though you may cause desyncs during timing/subtitle syncing with other subtitles this way.
-
-Whichever option you choose,
-it pays dividends to be consistent.
-One such consistency you can take
-is to always drop the frame with an orphan field if possible
-(these will almost always be marked as *B* matches,
-so they're easy to spot),
-and otherwise,
-drop the frame before a scene change if there is one.
-This is especially useful when IVTCing recurring clips,
-such as Opening or Ending themes,
-midcards,
-etc.
-
-### Handling 18p Scenes
-
-Once you have fixed all the wrong *30p* sections,
-we move on to *18p*.
-*18p* is basically always going to be incorrect.
-As such,
-there should be 0 instances of *18p* cycles left
-once you're done with IVTCing.
-
-Usually 18p scenes happen because of awkward pattern changes across scenes
-(or if you're unlucky,
-within the same scene),
-or because an orphan field gets dropped which breaks the framerate.
-This means that in certain situations,
-you may be forced to restore a duplicated frame
-to ensure you still have a consistent framerate.
-This is why it's recommended you apply the same consistency rule as with 30p scenes,
-but some of it in reverse.
-You restore orphan fields if possible,
-but at scenechanges,
-you restore the first frame of a scene if necessary
-(unless one scene has a pan and the other does not).
-This is because a "stutter" at the end of a scene is easier to spot
-than a stutter at the very start of a scene.
-If the 18p cycle occurs elsewhere,
-use your best judgment.
-Generally speaking,
-you can't really go wrong if it's for example in the middle of a scene.
-
-### Handling 12p and 6p Scenes
-
-12p and 6p,
-simply put,
-only occur when you've made a mistake with manual decimations.
-You can simply fix them and then handle them as you would 18p framerates
-once you restore enough frames.
-
-By the end of this,
-you should have a list of 29.97 frame/s scenes
-you manually and knowingly set this way.
-
-![Framerates fixed](imgs/framerates_fixed.png)
-
-## Cleaning Up
-
-Useful keybinds for this section:
-
-| Key                       | Action                                   |
-| ------------------------- | ---------------------------------------- |
-| Left Arrow                | Jump 1 frame back |
-| Right Arrow               | Jump 1 frame forward |
-| S                         | Cycle the current frame's match |
-| D                         | Toggle decimation for the current frame |
-| Ctrl + F                  | Replace current frame with previous frame (freezeframe) |
-| Shift + F                 | Replace current frame with next frame (freezeframe) |
-
-### Leftover Combing
-
-Finally,
-after matching scenes and forcing framerates,
-you still want to deal with leftover combing.
-Open the "Combed frames" menu.
-
-![A list of all the combed frames found](imgs/combed_frames.png)
-
-Before you do anything,
-click "Refresh".
-This will perform another search through the clip
-to find any remaining combed frames.
-This may take a couple of minutes to finish.
-
-![Finding combed frames...](imgs/finding_combs.png)
-
-You can now double-click on all the found combed frames,
-or jump to the next combed frame using .
-For any combed frame,
-you can press `S` to cycle through fieldhints.
-If every cycle returns a combed frames,
-consider adjusting the decimated frame
-(using `D` to swap between decimated and not,
-making sure you don't ruin the framerates you just fixed),
-or pulling it down in your filterchain later.
-
-Another thing to take into account is that this will also find telecined fades.
-You typically do not want to perform fieldmatching on the fade itself,
-but just the underlying animation.
-If the caught combed frame is caused by the fade,
-ignore it
-and process it with a filter meant to deal with those
-in your filterchain later.
-
-### Freezeframing
-
-If you find scenes of a duplicated clip
-(that was not decimated due to being animated on twos/threes/fours)
-that has very heavy compression artifacting,
-it might be worth it to freezeframe it with either the next frame
-(`Shift + F`)
-or the previous frame
-(`Ctrl + F`).
-You can adjust these later in the "Frozen frames" window.
-This usually won't be applicable or worth it
-unless you're dealing with *very* starved video
-and heavy MPEG2 blocking.
-
-Your clip should now be ready to be used in your own filterchain!
