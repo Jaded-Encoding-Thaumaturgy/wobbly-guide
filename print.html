@@ -749,6 +749,19 @@ click “Process project”
 as this will ruin your project file).
 It will return a list of problem sections like this:</p>
 <p><img src="wobbly/imgs/ambiguous_patterns.png" alt="Ambiguous patterns" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="handling-pattern-guessing-failures"><a class="header" href="#handling-pattern-guessing-failures">Handling Pattern Guessing Failures</a></h1>
+<p>After pattern guessing and fixing framerates,
+there may still be pattern guessing failures.</p>
+<p>Useful keybinds for this section:</p>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>S</td><td>Cycle the current frame’s match</td></tr>
+<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
+<tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
+<tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
+</tbody></table>
+</div>
 <h2 id="fixing-the-failures"><a class="header" href="#fixing-the-failures">Fixing the Failures</a></h2>
 <p>There are two kinds of pattern guessing failures:</p>
 <ul>
@@ -784,19 +797,6 @@ or scenes you can’t match properly
 and must be pulled down to 23.976 frame/s.
 <strong>Make sure you set it back to <em>24 fps</em>
 after you’ve dealt with every known 29.97 frame/s scene!</strong></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="handling-pattern-guessing-failures"><a class="header" href="#handling-pattern-guessing-failures">Handling Pattern Guessing Failures</a></h1>
-<p>After pattern guessing and fixing framerates,
-there may still be pattern guessing failures.</p>
-<p>Useful keybinds for this section:</p>
-<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
-<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
-<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
-<tr><td>S</td><td>Cycle the current frame’s match</td></tr>
-<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
-<tr><td>Ctrl + F</td><td>Replace current frame with previous frame (freezeframe)</td></tr>
-<tr><td>Shift + F</td><td>Replace current frame with next frame (freezeframe)</td></tr>
-</tbody></table>
-</div>
 <h2 id="leftover-combing"><a class="header" href="#leftover-combing">Leftover Combing</a></h2>
 <p>Pattern guessing may sometimes leave you with random combed frames
 that could not be matched automatically.
@@ -962,9 +962,10 @@ Please write an Issue instead.</p>
 </ul>
 <p>Development:</p>
 <ul>
-<li>Myrsloik (YATTA and Wobbly developer and creator)</li>
+<li>Myrsloik (YATTA and Vapoursynth developer and creator)</li>
+<li>dubhater (Wobbly developer and creator)</li>
 <li>Setsugennoao (Current Wobbly maintainer)</li>
-<li>arch1t3cht (Added the undo keybind, the best update Wobbly has ever received (<em>real and factual</em>))</li>
+<li>arch1t3cht (Added the undo keybind, the best update Wobbly has ever received (real <em>and</em> factual))</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="disclaimer"><a class="header" href="#disclaimer">Disclaimer</a></h2>
 <h3 id="accountability-for-content"><a class="header" href="#accountability-for-content">Accountability for content</a></h3>

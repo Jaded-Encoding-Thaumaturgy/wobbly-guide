@@ -330,41 +330,6 @@ click “Process project”
 as this will ruin your project file).
 It will return a list of problem sections like this:</p>
 <p><img src="imgs/ambiguous_patterns.png" alt="Ambiguous patterns" /></p>
-<h2 id="fixing-the-failures"><a class="header" href="#fixing-the-failures">Fixing the Failures</a></h2>
-<p>There are two kinds of pattern guessing failures:</p>
-<ul>
-<li>Section too short</li>
-</ul>
-<p>The section is too short for the guessing method.
-This is defined by the “Minimum length” setting.
-To fix this,
-double-click on the failed pattern guess in the list,
-adjust the section so it’s larger than or equal to the minimum length,
-and then click “Process current section”.
-If you did this properly,
-it should remve the section from the list.</p>
-<ul>
-<li>Ambiguous pattern</li>
-</ul>
-<p>Indicates that Wobbly was unable to find the correct pattern.
-There can be multiple reasons behind this,
-but it most often means that you either did not set your section correctly,
-or that section can not be IVTC’d properly.</p>
-<p>For every ambiguous pattern,
-you’ll want to manually fix the pattern.
-You can do this by double-clicking the failed guess in the list,
-and then cycle through the pattern using <code>Ctrl + S</code> by default.
-Note that this won’t remove the section from the list.</p>
-<p>If you have a section that you are sure is 29.97 frame/s,
-you can adjust the pattern in the “Pattern editor” window.
-Set it to <em>30 fps</em> and press <code>Ctrl + S</code>.
-You’ll also want to apply this to any scene that requires specific post-filtering in your script.
-This can be for example 59.94 frame/s credits on top of 23.976 frame/s video
-(which is very common for Opening and Ending themes),
-or scenes you can’t match properly
-and must be pulled down to 23.976 frame/s.
-<strong>Make sure you set it back to <em>24 fps</em>
-after you’ve dealt with every known 29.97 frame/s scene!</strong></p>
 
                     </main>
 
