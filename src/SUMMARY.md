@@ -21,8 +21,8 @@
 # Wobbly
 
 - [Starting Your Project](./wobbly/starting.md)
-- [Fixing Framerates](./wobbly/framerates.md)
 - [Fixing Failures](./wobbly/failures.md)
+- [Fixing Framerates](./wobbly/framerates.md)
 - [Using the Output](./wobbly/output.md)
 
 --------
