@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Using the Output - Wobbly Guide</title>
+        <title>Fixing Framerates - Wobbly Guide</title>
 
 
         <!-- Custom HTML head -->
@@ -87,7 +87,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../../index.html">About</a></li><li class="chapter-item expanded "><a href="../gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="../gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="../gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="../wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded "><a href="../wibbly/implementation.html">Different Implementations</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="../wobbly/starting.html">Starting Your Project</a></li><li class="chapter-item expanded "><a href="../wobbly/framerates.html">Fixing Framerates</a></li><li class="chapter-item expanded "><a href="../wobbly/failures.html">Fixing Failures</a></li><li class="chapter-item expanded "><a href="../wobbly/output.html" class="active">Using the Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="../impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="../privacy-policy.html">Privacy Policy</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../../index.html">About</a></li><li class="chapter-item expanded "><a href="../gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="../gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="../gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="../wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded "><a href="../wibbly/implementation.html">Different Implementations</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="../wobbly/starting.html">Starting Your Project</a></li><li class="chapter-item expanded "><a href="../wobbly/framerates.html" class="active">Fixing Framerates</a></li><li class="chapter-item expanded "><a href="../wobbly/failures.html">Fixing Failures</a></li><li class="chapter-item expanded "><a href="../wobbly/output.html">Using the Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="../impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="../privacy-policy.html">Privacy Policy</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,28 +151,98 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="making-use-of-the-wobbly-output"><a class="header" href="#making-use-of-the-wobbly-output">Making Use of the Wobbly Output</a></h1>
-<p>There are two straightforward ways to make use of the clip you’ve just fixed up in Wobbly.</p>
-<h2 id="from-wobbly-itself"><a class="header" href="#from-wobbly-itself">From Wobbly Itself</a></h2>
-<p>Within Wobbly’s “Project” dropdown menu,
-you can save a script.
-This will output a “vpy” file
-next to the Wobbly JSON file.</p>
-<p><img src="imgs/save_script.png" alt="Dropdown Options" /></p>
-<p><img src="imgs/generated_script.png" alt="Generated Script" /></p>
-<p>You can simply stick the contents of this script into your own script and work from there.</p>
-<h2 id="usin-an-external-tool"><a class="header" href="#usin-an-external-tool">Usin an External Tool</a></h2>
-<p>TODO: I would describe vswobbly here… IF I’D FINISHED WRITING IT!</p>
+                        <h1 id="fixing-framerate-failures"><a class="header" href="#fixing-framerate-failures">Fixing Framerate Failures</a></h1>
+<p>A list of useful keybinds for this section:</p>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody>
+<tr><td>Left Arrow</td><td>Jump 1 frame back</td></tr>
+<tr><td>Right Arrow</td><td>Jump 1 frame forward</td></tr>
+<tr><td>D</td><td>Toggle decimation for the current frame</td></tr>
+</tbody></table>
+</div>
+<p>Now that you’ve made most of your matches,
+navigate to the “Frame rates” window.
+It’s easiest to go one frame rate at a time.
+First,
+select the “30p” checkbox.</p>
+<p><img src="imgs/framerates.png" alt="Framerates" /></p>
+<h3 id="handling-30p-scenes"><a class="header" href="#handling-30p-scenes">Handling 30p Scenes</a></h3>
+<p>29.97 frame/s framerates can show up for a couple reasons:</p>
+<ul>
+<li>You set a section to 29.97 frame/s yourself</li>
+</ul>
+<p>This should be done on any scenes that are native 29.97 frame/s or 59.94 frame/s,
+or requires pulldown of some kind
+(overlaid 29.97 frame/s credits on 23.976 frame/s content, for example).</p>
+<ul>
+<li>Pattern changes on scenechanges leave you with an extra frame</li>
+</ul>
+<p><img src="imgs/extra_frame.png" alt="An extra frame is left" /></p>
+<p>This is not an uncommon occurrence,
+as with anime the editing is often done on the telecined video.
+The easiest fix for this is to simply decimate one of the extra frames.
+This ensures you keep a constant frame rate.
+This option is especially easy to take if the final frame in a section has an orphan field,
+as the easiest way to fix those is to drop it anyway.
+Another option is to keep that section 29.97 frame/s,
+though you may cause desyncs during timing/subtitle syncing with other subtitles this way.</p>
+<p>Whichever option you choose,
+it pays dividends to be consistent.
+One such consistency you can take
+is to always drop the frame with an orphan field if possible
+(these will almost always be marked as <em>B</em> matches,
+so they’re easy to spot),
+and otherwise,
+drop the frame before a scene change if there is one.
+This is especially useful when IVTCing recurring clips,
+such as Opening or Ending themes,
+midcards,
+etc.</p>
+<h3 id="handling-18p-scenes"><a class="header" href="#handling-18p-scenes">Handling 18p Scenes</a></h3>
+<p>Once you have fixed all the wrong <em>30p</em> sections,
+we move on to <em>18p</em>.
+<em>18p</em> is basically always going to be incorrect.
+As such,
+there should be 0 instances of <em>18p</em> cycles left
+once you’re done with IVTCing.</p>
+<p>Usually 18p scenes happen because of awkward pattern changes across scenes
+(or if you’re unlucky,
+within the same scene),
+or because an orphan field gets dropped which breaks the framerate.
+This means that in certain situations,
+you may be forced to restore a duplicated frame
+to ensure you still have a consistent framerate.
+This is why it’s recommended you apply the same consistency rule as with 30p scenes,
+but some of it in reverse.
+You restore orphan fields if possible,
+but at scenechanges,
+you restore the first frame of a scene if necessary
+(unless one scene has a pan and the other does not).
+This is because a “stutter” at the end of a scene is easier to spot
+than a stutter at the very start of a scene.
+If the 18p cycle occurs elsewhere,
+use your best judgment.
+Generally speaking,
+you can’t really go wrong if it’s for example in the middle of a scene.</p>
+<h3 id="handling-12p-and-6p-scenes"><a class="header" href="#handling-12p-and-6p-scenes">Handling 12p and 6p Scenes</a></h3>
+<p>12p and 6p,
+simply put,
+only occur when you’ve made a mistake with manual decimations.
+You can simply fix them and then handle them as you would 18p framerates
+once you restore enough frames.</p>
+<p>By the end of this,
+you should have a list of 29.97 frame/s scenes
+you manually and knowingly set this way.</p>
+<p><img src="imgs/framerates_fixed.png" alt="Framerates fixed" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../wobbly/failures.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../wobbly/starting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../development/CONTRIBUTING.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../wobbly/failures.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -182,11 +252,11 @@ next to the Wobbly JSON file.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../wobbly/failures.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../wobbly/starting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../development/CONTRIBUTING.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../wobbly/failures.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
