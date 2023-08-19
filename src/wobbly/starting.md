@@ -130,14 +130,14 @@ This is never recommended.
 - From mics
 
 Try to guess the patterns using mics.
-This option is generally reliable,
-but on its own it may still return a lot of errors.
+This option is the most reliable,
+but will also tend to result in the most errors.
 
 - From dmetrics
 
 Try to guess the pattern using dmetrics.
-This errors less than guessing from mics does,
-but the scenes it guessed may not be as accurate as mics.
+This is in the middle in terms of errors returned,
+but the reliability of guessing is the worst of the 3 main modes.
 
 - From mics+dmetrics
 
