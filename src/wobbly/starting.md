@@ -145,8 +145,8 @@ Try to guess the pattern using mics wherever possible
 to have the highest likelihood of the guessed scenes being correct.
 If dmetrics matches a scene mics didn't,
 it will fall back on dmetrics.
-This is the most reliable option,
-and it's quite accurate and returns the least amount of errors.
+This is the in the middle in terms of reliability,
+with the least amount of errors.
 
 ### Edge cutoff
 
