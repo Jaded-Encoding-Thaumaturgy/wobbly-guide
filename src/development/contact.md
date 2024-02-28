@@ -1,5 +1,3 @@
-
-
 [Discord server][discord]
 
-[discord]: https://discord.gg/cwmaHBancy
+[discord]: https://discord.gg/XTpc6Fa9eB
