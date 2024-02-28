@@ -44,6 +44,6 @@ but figuring out how to make use of the output is up to you.
 
 [//]: <> (urls)
 [github]: https://github.com/Irrational-Encoding-Wizardry/wobbly-guide
-[contact]: ../wobbly-docs/src/development/contact.md
-[overview]: ../wobbly-docs/src/gettingstarted/primer.md
-[contribute]: ../wobbly-docs/src/development/CONTRIBUTING.md
+[contact]: ./src/development/contact.md
+[overview]: ./src/gettingstarted/primer.md
+[contribute]: ./src/development/CONTRIBUTING.md
