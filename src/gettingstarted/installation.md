@@ -1,14 +1,6 @@
 # Installation
 
-To install Wobbly, you must first navigate to its [download page][wobbly_release].
-The recommended version as of writing this guide is the [Setsugennoao fork, release v6-R2][recommended_version].
-
-You can get the latest version by going to the *Actions* tab,
-clicking on the latest workflow,
-and clicking on the *Wobbly-win64* link under *Artifacts*.
-It should start downloading Wobbly now.
-
-![A Wobbly artifact](imgs/wobbly_artifact.png)
+The recommended version to download is the [Setsugennoao fork][wobbly_release].
 
 To continue, you must now unpack this zip file.
 Make sure you unpack it in a place you're sure it won't be moved from in the future!
@@ -40,4 +32,3 @@ This will open up a window displaying the plugins it was able to find.
 
 [//]: <> (urls)
 [wobbly_release]: https://github.com/Setsugennoao/Wobbly/releases
-[recommended_version]: https://github.com/Setsugennoao/Wobbly/actions
