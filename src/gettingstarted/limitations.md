@@ -88,4 +88,4 @@ and can't rely on the one Wobbly outputs.
 
 [//]: <> (urls)
 [PAL_NTSC]: https://en.wikipedia.org/wiki/DVD_region_code#PAL/SECAM_vs._NTSC
-[framerates_guide]: //
+[framerates_guide]: ../wobbly/framerates.md
