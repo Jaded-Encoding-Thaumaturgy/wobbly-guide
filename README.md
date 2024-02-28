@@ -1,4 +1,4 @@
-# The IEW Guide to Wobbly
+# The JET Guide to Wobbly
 
 Learn how to use Wobbly, *the* Vapoursynth manual IVTCing tool.
 This guide covers the basic use-cases,
@@ -43,7 +43,7 @@ but figuring out how to make use of the output is up to you.
 
 
 [//]: <> (urls)
-[github]: https://github.com/Irrational-Encoding-Wizardry/wobbly-guide
-[contact]: ../wobbly-docs/src/development/contact.md
-[overview]: ../wobbly-docs/src/gettingstarted/primer.md
-[contribute]: ../wobbly-docs/src/development/CONTRIBUTING.md
+[github]: https://github.com/Jaded-Encoding-Thaumaturgy/wobbly-guide
+[contact]: ./src/development/contact.md
+[overview]: ./src/gettingstarted/primer.md
+[contribute]: ./src/development/CONTRIBUTING.md
