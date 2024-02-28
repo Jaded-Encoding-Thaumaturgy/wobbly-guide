@@ -1,10 +1,21 @@
 # Installation
 
-The recommended version to download is the [Setsugennoao fork][wobbly_release].
+We recommend downloading Wobbly from the [Setsugennoao fork][wobbly_release].
 
-To continue, you must now unpack this zip file.
-Make sure you unpack it in a place you're sure it won't be moved from in the future!
-The easiest place to put it is in your Documents directory.
+To continue, you must unpack the zip file.
+Make sure you unpack it in a place where you're sure it won't be moved from in the future!
+An easy place to put it is in your Documents directory.
+
+## Downloading a pre-release version
+
+If the most recent release is not up to date with the master branch,
+then you might want to consider downloading from the [actions page][actions_page].
+You can get the latest snapshot by going to the *Actions* tab,
+clicking on the latest workflow,
+and then click on the *Wobbly-win64* link under *Artifacts*.
+If the artifacts link has not expired yet, it will start downloading the latest snapshot.
+
+![A Wobbly artifact](imgs/wobbly_artifact.png)
 
 ## Dependencies
 
@@ -32,3 +43,4 @@ This will open up a window displaying the plugins it was able to find.
 
 [//]: <> (urls)
 [wobbly_release]: https://github.com/Setsugennoao/Wobbly/releases
+[actions_page]: https://github.com/Setsugennoao/Wobbly/actions
