@@ -29,4 +29,4 @@ Development:
 
 
 [//]: <> (urls)
-[Semantic Line Breaks]: https://docs.fluidattacks.com/development/writing/slb/
+[Semantic Line Breaks]: https://web.archive.org/web/20230929101316/https://docs.fluidattacks.com/development/writing/slb/
