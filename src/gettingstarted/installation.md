@@ -1,7 +1,7 @@
 # Installation
 
 To install Wobbly, you must first navigate to its [download page][wobbly_release].
-The recommended version as of writing this guide is the [Setsugennoao fork, release v6-R2][recommended_version].
+The recommended version as of writing this guide is the [Setsugennoao fork, release v7][recommended_version].
 
 You can get the latest version by going to the *Actions* tab,
 clicking on the latest workflow,
