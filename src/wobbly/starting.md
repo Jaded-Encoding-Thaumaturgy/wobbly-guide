@@ -11,6 +11,47 @@ and drag it into the Wobbly window.
 
 ## Familiarizing Yourself with the UI
 
+The main window of Wobbly consists of two tabs called "Source" and "Preview" which provide different video views.
+The "Source" tab shows the loaded video with only fieldmatching applied.
+The "Preview" tab shows the video with both fieldmatching and decimation,
+as well as any filters from custom lists and the like.
+When working with the video you'll usually want to use the "Source" tab so you're able to see all frames.
+When manually fixing up decimation it can be helpful to check the "Preview" tab.
+
+Below the main preview you'll see a row of smaller pictures showing the previous and next frames.
+These are especially helpful when editing sections (i.e. scene changes).
+You can configure wobbly to show more preceding and following frames in the settings.
+
+![The Wobbly Main Window](imgs/wrong_scenechange.png)
+
+Wobbly shows a lot of text on the main video display.
+The most important of the values shown is the list of matches, but let's go through all of them in order:
+
+- **Frame:** Shows the current frame number before decimation and after decimation.
+- **Time:** Take a guess.
+- **Matches:** This shows how the frames around the current frame are fieldmatched.
+  The capital letter corresponds to the current frame.
+  The underlined letters are the ones at the start of a five-frame cycle,
+  i.e. the ones whose frame number (before decimation) is divisible by 5.
+  The crossed out letters are the ones corresponding to decimated frames.
+- **Section:** Shows the section the current frame belongs to.
+- **Presets** and **Custom Lists:** Shows the presets and custom lists assigned to these frames.
+- **DMetric:** Shows the frame's duplication metric.
+  This is one of the metrics that was computed when running Wibbly.
+  The lower the number, the more likely the frame is to be a duplicate of the previous frame,
+  which means that this or the previous frame can be decimated.
+- **MMetrics**, **VMetrics**, and **Mics**: Shows various fieldmatching metrics for the current frame.
+  MMetrics and VMetrics are computed by the `dmetrics` plugin and show metrics for the three basic matches (c, n, p).
+  Mics are computed by VIVTC and shows metrics for all possible metrics (c, n, p, u, b),
+  though u and b are equivalent to p and n of the next/previous frame.
+  The metric/mic for the frame's currently active match is shown in bold.
+  The higher a metric/mic for a given match is, the more combing the frame resulting from that match has,
+  so the lower the metric/mic the more likely that match is likely to be correct.
+
+See also [the Wobbly docs](https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/blob/master/doc/wobbly.rst#frame-details-window).
+
+## Key Bindings
+
 Wobbly can be a bit difficult to work around for beginners.
 This is because it's primarily built to work with *keybinds*.
 This is a lot faster than pressing a button on-screen for every single operation,
