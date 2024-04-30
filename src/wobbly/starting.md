@@ -41,7 +41,7 @@ The most important of the values shown is the list of matches, but let's go thro
   The lower the number, the more likely the frame is to be a duplicate of the previous frame,
   which means that this or the previous frame can be decimated.
 - **MMetrics**, **VMetrics**, and **Mics**: Shows various fieldmatching metrics for the current frame.
-  MMetrics and VMetrics are computed by the `dmetrics` plugin and show metrics for the three basic matches (c, n, p).
+  MMetrics and VMetrics are computed by the `dmetrics` plugin and show metrics for the three matches b, c, n.
   Mics are computed by VIVTC and shows metrics for all possible metrics (c, n, p, u, b),
   though u and b are equivalent to p and n of the next/previous frame.
   The metric/mic for the frame's currently active match is shown in bold.
