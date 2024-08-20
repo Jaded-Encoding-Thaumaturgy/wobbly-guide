@@ -12,7 +12,7 @@ create-missing = false
 
 [output.html]
 default-theme = "navy"
-curly-quotes = true
+smart-punctuation = true
 mathjax-support = true
 additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
 no-section-label = true
