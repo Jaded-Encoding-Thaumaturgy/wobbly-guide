@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js navy">
+<html lang="en" class="navy" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -35,7 +35,7 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -65,42 +65,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('navy')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../../index.html">About</a></li><li class="chapter-item expanded "><a href="../gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="../gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="../gettingstarted/installation.html">Installation</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="../wibbly/jobs.html">First steps</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="../wobbly/starting.html" class="active">Starting Your Project</a></li><li class="chapter-item expanded "><a href="../wobbly/failures.html">Fixing Failures</a></li><li class="chapter-item expanded "><a href="../wobbly/framerates.html">Fixing Framerates</a></li><li class="chapter-item expanded "><a href="../wobbly/output.html">Using the Output</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="../impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="../privacy-policy.html">Privacy Policy</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Getting started</li><li class="chapter-item expanded "><a href="../../index.html">About</a></li><li class="chapter-item expanded "><a href="../gettingstarted/primer.html">Telecining</a></li><li class="chapter-item expanded "><a href="../gettingstarted/limitations.html">Limitations</a></li><li class="chapter-item expanded "><a href="../gettingstarted/installation.html">Installation</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wibbly</li><li class="chapter-item expanded "><a href="../wibbly/jobs.html">First steps</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Wobbly</li><li class="chapter-item expanded "><a href="../wobbly/starting.html" class="active">Starting Your Project</a></li><li class="chapter-item expanded "><a href="../wobbly/failures.html">Fixing Failures</a></li><li class="chapter-item expanded "><a href="../wobbly/framerates.html">Fixing Framerates</a></li><li class="chapter-item expanded "><a href="../wobbly/output.html">Using the Output</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../development/CONTRIBUTING.html">Contributing to the Guide</a></li><li class="chapter-item expanded affix "><a href="../impressum.html">Impressum</a></li><li class="chapter-item expanded affix "><a href="../privacy-policy.html">Privacy Policy</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -122,7 +151,7 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/Irrational-Encoding-Wizardry/wobbly-guide" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/Jaded-Encoding-Thaumaturgy/wobbly-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -160,6 +189,42 @@ grab the “wob” JSON file you generated using Wibbly
 (or any other metrics gathering tool designed for wobbly)
 and drag it into the Wobbly window.</p>
 <h2 id="familiarizing-yourself-with-the-ui"><a class="header" href="#familiarizing-yourself-with-the-ui">Familiarizing Yourself with the UI</a></h2>
+<p>The main window of Wobbly consists of two tabs called “Source” and “Preview” which provide different video views.
+The “Source” tab shows the loaded video with only fieldmatching applied.
+The “Preview” tab shows the video with both fieldmatching and decimation,
+as well as any filters from custom lists and the like.
+When working with the video you’ll usually want to use the “Source” tab so you’re able to see all frames.
+When manually fixing up decimation it can be helpful to check the “Preview” tab.</p>
+<p>Below the main preview you’ll see a row of smaller pictures showing the previous and next frames.
+These are especially helpful when editing sections (i.e. scene changes).
+You can configure wobbly to show more preceding and following frames in the settings.</p>
+<p><img src="imgs/wrong_scenechange.png" alt="The Wobbly Main Window" /></p>
+<p>Wobbly shows a lot of text on the main video display.
+The most important of the values shown is the list of matches, but let’s go through all of them in order:</p>
+<ul>
+<li><strong>Frame:</strong> Shows the current frame number before decimation and after decimation.</li>
+<li><strong>Time:</strong> Take a guess.</li>
+<li><strong>Matches:</strong> This shows how the frames around the current frame are fieldmatched.
+The capital letter corresponds to the current frame.
+The underlined letters are the ones at the start of a five-frame cycle,
+i.e. the ones whose frame number (before decimation) is divisible by 5.
+The crossed out letters are the ones corresponding to decimated frames.</li>
+<li><strong>Section:</strong> Shows the section the current frame belongs to.</li>
+<li><strong>Presets</strong> and <strong>Custom Lists:</strong> Shows the presets and custom lists assigned to these frames.</li>
+<li><strong>DMetric:</strong> Shows the frame’s duplication metric.
+This is one of the metrics that was computed when running Wibbly.
+The lower the number, the more likely the frame is to be a duplicate of the previous frame,
+which means that this or the previous frame can be decimated.</li>
+<li><strong>MMetrics</strong>, <strong>VMetrics</strong>, and <strong>Mics</strong>: Shows various fieldmatching metrics for the current frame.
+MMetrics and VMetrics are computed by the <code>dmetrics</code> plugin and show metrics for the three matches b, c, n.
+Mics are computed by VIVTC and shows metrics for all possible metrics (c, n, p, u, b),
+though u and b are equivalent to p and n of the next/previous frame.
+The metric/mic for the frame’s currently active match is shown in bold.
+The higher a metric/mic for a given match is, the more combing the frame resulting from that match has,
+so the lower the metric/mic the more likely that match is likely to be correct.</li>
+</ul>
+<p>See also <a href="https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/blob/master/doc/wobbly.rst#frame-details-window">the Wobbly docs</a>.</p>
+<h2 id="key-bindings"><a class="header" href="#key-bindings">Key Bindings</a></h2>
 <p>Wobbly can be a bit difficult to work around for beginners.
 This is because it’s primarily built to work with <em>keybinds</em>.
 This is a lot faster than pressing a button on-screen for every single operation,
@@ -337,7 +402,7 @@ It will return a list of problem sections like this:</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../wobbly/failures.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../wobbly/failures.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -351,7 +416,7 @@ It will return a list of problem sections like this:</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../wobbly/failures.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../wobbly/failures.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
