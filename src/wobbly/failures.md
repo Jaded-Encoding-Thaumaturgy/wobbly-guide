@@ -119,3 +119,21 @@ that captures just the fade.
 Wobbly may be able to accurately decimate that for you.
 If the pattern remains the same,
 there is no reason to do this.
+
+## Scenes that are likely to silently fail
+
+Wobbly is reliant on the metrics it is fed,
+and those metrics do not always perform well in scenes
+with low-contrast combing or with a very slow pan/zoom.
+And example of the former scene is a scene with rain and no other animation.
+Depending on what pattern guessing method you used,
+Wobbly may not mark these types of scenes as having an ambiguous pattern,
+meaning that they will fail silently and you will not know
+that there is a problem that you need to fix.
+These scenes also usually cannot be caught by looking at combed frames,
+high-mic frames, or frames with high dmetrics.
+There is no solution to this other than to pay close
+attention to those types of scenes when you are QCing your encode.
+You need to understand the metrics being used
+and use that knowledge to predict failure.
+Looking at the metrics in the overlay can assist your understanding.
