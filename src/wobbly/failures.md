@@ -125,7 +125,7 @@ there is no reason to do this.
 Wobbly is reliant on the metrics it is fed,
 and those metrics do not always perform well in scenes
 with low-contrast combing or with a very slow pan/zoom.
-And example of the former scene is a scene with rain and no other animation.
+An example of the former scene is a scene with rain and no other animation.
 Depending on what pattern guessing method you used,
 Wobbly may not mark these types of scenes as having an ambiguous pattern,
 meaning that they will fail silently and you will not know
