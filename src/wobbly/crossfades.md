@@ -29,9 +29,11 @@ one frame apart.
 If the patterns start on 4 and 1, respectively, the patterns are two frames apart (since `(4+2) mod 5 = 1`).
 
 ![This cut's pattern starts on frame 11060, which ends in 0...](imgs/cut_a.png)
+
 This cut's CCCNN pattern starts on frame 11060, which ends in 0...
 
-![...and this cut's pattern starts on frame 11134, which ends in 4.](imgs/cut_a.png)
+![...and this cut's pattern starts on frame 11134, which ends in 4.](imgs/cut_b.png)
+
 ...and this cut's CCCNN pattern starts on frame 11134, which ends in 4. So the patterns are 1 frame apart, since `(4 + 1) mod 5 = 0`.
 To be clear, you can pick any frame where the CCCNN pattern starts
 when doing this check.
