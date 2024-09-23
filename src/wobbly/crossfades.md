@@ -30,7 +30,8 @@ If the patterns start on 4 and 1, respectively, the patterns are two frames apar
 
 ![This cut's pattern starts on frame 11060, which ends in 0...](imgs/cut_a.png)  
 
-This cut's CCCNN pattern starts on frame 11060, which ends in 0...
+In the screenshot above, the CCCNN pattern starts on frame 11060,
+which ends in 0...
 
 
 ![...and this cut's pattern starts on frame 11134, which ends in 4.](imgs/cut_b.png)  
