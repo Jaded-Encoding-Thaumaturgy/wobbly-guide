@@ -44,6 +44,6 @@ but figuring out how to make use of the output is up to you.
 
 [//]: <> (urls)
 [github]: https://github.com/Jaded-Encoding-Thaumaturgy/wobbly-guide
-[contact]: ./src/development/contact.md
-[overview]: ./src/gettingstarted/primer.md
-[contribute]: ./src/development/CONTRIBUTING.md
+[contact]: ./development/contact.md
+[overview]: ./gettingstarted/primer.md
+[contribute]: ./development/CONTRIBUTING.md
