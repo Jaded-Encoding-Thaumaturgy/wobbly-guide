@@ -48,7 +48,7 @@ When telecining,
 the fields of these frames will often alternate like so:
 
 $$
-\frac{A - A - B -  B -  B -  C -  C -  D - D - D}{2 - 3 - 2 -3}
+\frac{A^1 - A^2 - B^1 -  B^2 -  B^1 -  C^2 -  C^1 -  D^2 - D^1 - D^2}{2 - 3 - 2 -3}
 $$
 
 This telecining operation is called *3:2 pulldown*,
