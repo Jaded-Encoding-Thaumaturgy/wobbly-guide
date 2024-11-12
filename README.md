@@ -6,7 +6,6 @@ recommend settings,
 and how to use Wobbly
 so you can perform IVTC to your heart's content.
 
-
 To start reading,
 you can click on the arrow on the right
 or press your <kbd>→</kbd> key
@@ -15,20 +14,17 @@ or you can browse the page index on the left.
 
 The project is [hosted on Github][github].
 
-
 ## Getting started
 
 New to Wobbly or IVTC/Deinterlacing in general?
 Check out our [quick primer][overview] to get a basic understanding
 of the relevant topic and theories.
 
-
 ## Contributing
 
 Spot a typo or problem with the guide?
 Want to contribute to Wobbly?
 Check the [contribute] section!
-
 
 ## Disclaimers
 
@@ -41,9 +37,8 @@ This is neither a Vapoursynth nor a filtering guide.
 This book explains how to use a Vapoursynth tool,
 but figuring out how to make use of the output is up to you.
 
-
 [//]: <> (urls)
 [github]: https://github.com/Jaded-Encoding-Thaumaturgy/wobbly-guide
-[contact]: ./development/contact.md
-[overview]: ./gettingstarted/primer.md
-[contribute]: ./development/CONTRIBUTING.md
+[contact]: https://github.com/Jaded-Encoding-Thaumaturgy/wobbly-guide/issues
+[overview]: https://wobbly.encode.moe/gettingstarted/primer.html
+[contribute]: https://wobbly.encode.moe/development/CONTRIBUTING.html
