@@ -22,11 +22,11 @@ Be aware that you need to be logged in on GitHub to download artifacts.
 
 Wobbly has the following dependencies:
 
+* [BestSource](https://github.com/vapoursynth/bestsource) (optional, input dependent)
 * [d2vsource](https://github.com/dwbuiten/d2vsource) (optional, input dependent)
 * [DGDecNV](https://www.rationalqm.us/dgdecnv/dgdecnv.html) (optional, input dependent)
 * [DMetrics](https://github.com/vapoursynth/dmetrics)
 * [FieldHint](https://github.com/dubhater/vapoursynth-fieldhint)
-* [L-SMASH-Works](https://github.com/AkarinVS/L-SMASH-Works) (optional, input dependent, through Akarin)
 * [SCXVID](https://github.com/dubhater/vapoursynth-scxvid)
 * [TDeintMod](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod)
 * [vivtc](https://github.com/vapoursynth/vivtc)
