@@ -430,11 +430,11 @@ Be aware that you need to be logged in on GitHub to download artifacts.</p>
 <h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
 <p>Wobbly has the following dependencies:</p>
 <ul>
+<li><a href="https://github.com/vapoursynth/bestsource">BestSource</a> (optional, input dependent)</li>
 <li><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a> (optional, input dependent)</li>
 <li><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a> (optional, input dependent)</li>
 <li><a href="https://github.com/vapoursynth/dmetrics">DMetrics</a></li>
 <li><a href="https://github.com/dubhater/vapoursynth-fieldhint">FieldHint</a></li>
-<li><a href="https://github.com/AkarinVS/L-SMASH-Works">L-SMASH-Works</a> (optional, input dependent, through Akarin)</li>
 <li><a href="https://github.com/dubhater/vapoursynth-scxvid">SCXVID</a></li>
 <li><a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">TDeintMod</a></li>
 <li><a href="https://github.com/vapoursynth/vivtc">vivtc</a></li>
@@ -482,33 +482,18 @@ we first need to drag a video file into the jobs window.</p>
 <p><img src="wibbly/imgs/first_job.png" alt="Simple job" /></p>
 <p>Wibbly accepts the following inputs:</p>
 <ul>
-<li>Common video formats L-SMASH-Works can read (such as m2ts, mkv, etc.)</li>
-<li>DGIndexNV indexing files</li>
-<li>d2v indexing files</li>
+<li>Common video formats BestSource can read (such as m2ts, mkv, etc.)</li>
+<li>dgi index files</li>
+<li>d2v index files</li>
 </ul>
-<p>For most DVDs,
-it’s highly recommended you use DGIndexNV.
-This will consistently be the most accurate,
-and also allow you to easily disable soft telecining if necessary.
-DGIndeNV requires an NVidia GPU,
-so if you don’t have one,
-you can use D2vWitch.
-How to use either program is outside of the scope of this guide.</p>
-<p>For Blu-ray files,
-DGIndexNV will still give you the most accurate results.
-However, you can also opt to use L-SMASH-Works instead,
-though this is not recommended as L-SMASH-Works returns inaccurate results on interlaced content.
-It will use L-SMASH-Works by default if you drag an m2ts or mkv file
-into the jobs window.</p>
+<p>Note that, if you use BestSource, your source file must be remuxed to MKV format.</p>
 <p>Take note!
-If DGIndexNV reports that your source is (almost) 100% FILM,
+If DGIndex reports that your source is (almost) 100% FILM,
 you do not want to use Wobbly on it!
 <em>FILM</em> denotes how much of the indexed clip is <em>soft-telecined</em>.
 If the entire clip is FILM,
 there is no reason to perform any IVTC on it
-and instead you should simply ignore the flag.
-You can do this by loading the index file in your script using <code>dgdecodenv.DGSource</code>
-and passing the following argument: <code>fieldop=1</code>.</p>
+and instead you should simply ignore the flag.</p>
 <h2 id="gathering-metrics"><a class="header" href="#gathering-metrics">Gathering Metrics</a></h2>
 <p>Once you’ve indexed a video file,
 the video will show in the Video Output window.</p>
