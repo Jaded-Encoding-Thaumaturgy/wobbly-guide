@@ -40,4 +40,4 @@ This will open up a window displaying the plugins it was able to find.
 
 [//]: <> (urls)
 [wobbly_release]: https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases
-[actions_page]: [https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/actions](https://nightly.link/Jaded-Encoding-Thaumaturgy/Wobbly/workflows/windows/master/Wobbly-win64.zip)
+[actions_page]: https://nightly.link/Jaded-Encoding-Thaumaturgy/Wobbly/workflows/windows/master/Wobbly-win64.zip
