@@ -9,12 +9,8 @@ An easy place to put it is in your Documents directory.
 ## Downloading a pre-release version
 
 If the most recent release is not up to date with the master branch,
-then you might want to consider downloading from the [actions page][actions_page].
-You can get the latest snapshot by going to the *Actions* tab,
-clicking on the latest workflow,
-and then click on the *Wobbly-win64* link under *Artifacts*.
-If the artifacts link has not expired yet, it will start downloading the latest snapshot.
-Be aware that you need to be logged in on GitHub to download artifacts.
+then you might want to consider downloading the [latest master build][actions_page].
+If the build has not expired yet, it will start downloading the latest snapshot.
 
 ![A Wobbly artifact](imgs/wobbly_artifact.png)
 
@@ -44,4 +40,4 @@ This will open up a window displaying the plugins it was able to find.
 
 [//]: <> (urls)
 [wobbly_release]: https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases
-[actions_page]: https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/actions
+[actions_page]: [https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/actions](https://nightly.link/Jaded-Encoding-Thaumaturgy/Wobbly/workflows/windows/master/Wobbly-win64.zip)
