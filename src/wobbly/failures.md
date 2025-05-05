@@ -110,15 +110,6 @@ When dealing with fades to and from scenes,
 you'll want to put the scene change somewhere in the middle.
 The first frame before a fade in is usually the best,
 unless it fades in from a solid colour with a clear scenechange.
-To deal with crossfades
-(that is, two scenes that fade into each other
-without a solid color inbetween)
-where the pattern differs between scenes,
-you can try creating a new section
-that captures just the fade.
-Wobbly may be able to accurately decimate that for you.
-If the pattern remains the same,
-there is no reason to do this.
 
 ## Scenes that are likely to silently fail
 
