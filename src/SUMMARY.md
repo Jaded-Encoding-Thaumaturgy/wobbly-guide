@@ -22,6 +22,7 @@
 - [Starting Your Project](./wobbly/starting.md)
 - [Fixing Failures](./wobbly/failures.md)
 - [Fixing Framerates](./wobbly/framerates.md)
+- [Crossfades](./wobbly/crossfades.md)
 - [Post-processing](./wobbly/postprocessing.md)
 - [Using the Output](./wobbly/output.md)
 
